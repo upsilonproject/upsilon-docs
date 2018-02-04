@@ -1,2 +1,2 @@
 default:
-	asciidoctor index.adoc
+	asciidoctor README.adoc

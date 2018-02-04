@@ -1,10 +1,16 @@
-upsilon-docs
+Upsilon Docs
 ============
+:toc: macro
+
+toc::[] 
+
+These are the Upsilon docs.
 
 image:https://travis-ci.org/upsilonproject/upsilon-docs.svg?branch=master["Build Status", link="https://travis-ci.org/upsilonproject/upsilon-docs"]
 
-The upsilon documentation. :) 
+include::deployment-environments/index.adoc[Deployment environments]
 
-Currently <<test#,testing>>. 
+include::authentication/index.adoc[Authentication]
 
-Testing looks good.
+include::appendix.adoc[Appendix]
+
