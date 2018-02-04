@@ -3,6 +3,8 @@ upsilon-docs
 
 image:https://travis-ci.org/upsilonproject/upsilon-docs.svg?branch=master["Build Status", link="https://travis-ci.org/upsilonproject/upsilon-docs"]
 
-The upsilon documentation. :)
+The upsilon documentation. :) 
 
 Currently <<test#,testing>>. 
+
+Testing looks good.
