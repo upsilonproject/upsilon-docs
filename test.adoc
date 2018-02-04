@@ -12,7 +12,7 @@ Code
 
 Oh joy. Another **thing**. 
 
-hi there. check out my `really **cool** code`.
+hi there. check out my `really **cool** `.
 
 [source,java]
 ----

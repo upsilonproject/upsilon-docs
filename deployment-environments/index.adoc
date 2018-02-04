@@ -1,11 +1,14 @@
-Deployment Environments
------------------------
+Deployment Environments jobs
+----------------------------
 
 Overview of deployment options 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* link:[All in one CentOS Virtual Machine] (~20 minutes)
+* Upsilon all-in-one on a CentOS Virtual Machine (~20 minutes)
 * Upsilon on OpenShift (~5 minutes)
+* Upsilon in docker Containers (~10 minutes)
+* Upsilon with Ansible (advanced installation)
+* Upsilon your way... (advanced installation)
 
 include::upsilon-allinone-centos.adoc[]
 include::upsilon-on-openshift.adoc[]

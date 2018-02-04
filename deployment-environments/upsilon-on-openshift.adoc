@@ -28,25 +28,25 @@ https://github.com/upsilonproject/upsilon-on-openshift[upsilon-on-openshift].
 On your local workstation, clone this repository:
 
 ....
-<code>
-{% include shellUser.htm %} <strong>mkdir upsilon-sandbox && cd upsilon-sandbox</strong><br />
-{% include shellUser.htm %} <strong>git clone https://github.com/upsilonproject/upsilon-on-openshift.git</strong><br />
-{% include shellUser.htm %} <strong>cd upsilon-on-openshift</strong>
-</code>
+
+user@host: <strong>mkdir upsilon-sandbox && cd upsilon-sandbox</strong>
+user@host: <strong>git clone https://github.com/upsilonproject/upsilon-on-openshift.git</strong>
+user@host: <strong>cd upsilon-on-openshift</strong>
+
 ....
 
 Login to OpenShift using the command line tool and upload the
 application template.
 
 ....
-{% include shellUser.htm %} <strong>oc new-project upsilon-on-openshift</strong><br />
-{% include shellUser.htm %} <strong>oc status</strong><br />
-In project Upsilon on OpenShift (upsilon-on-openshift) on server https://openshift.example.com:8443<br /><br />
+user@host: <strong>oc new-project upsilon-on-openshift</strong>
+user@host: <strong>oc status</strong>
+In project Upsilon on OpenShift (upsilon-on-openshift) on server https://openshift.example.com:8443
 
-You have no services, deployment configs, or build configs.<br />
-Run 'oc new-app' to create an application.<br />
+You have no services, deployment configs, or build configs.
+Run 'oc new-app' to create an application.
 
-{% include shellUser.htm %} <strong>oc create -f upsilon-on-openshift.yaml</strong><br />
+user@host: <strong>oc create -f upsilon-on-openshift.yaml</strong>
 ....
 
 
@@ -72,8 +72,8 @@ to come up sucessfully. This may take a couple of minutes.
 Create the initial database using the create-database script.
 
 ....
-{% include shellUser.htm %} <strong>cd /usr/share/upsilon-database/mysql/</strong><br />
-{% include shellUser.htm %} <strong>./create-database</strong><br />
+user@host: <strong>cd /usr/share/upsilon-database/mysql/</strong>
+user@host: <strong>./create-database</strong>
 ....
 
 
@@ -83,3 +83,5 @@ Go to the web application
 
 Click on the upsilon-web route to
 link:start%20the%20installer[upsilon-web-installer].
+
+

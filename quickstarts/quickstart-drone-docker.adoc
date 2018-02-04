@@ -5,11 +5,11 @@ interface first.
 Installer docker on a Linux machine, then start off by pulling the
 image.
 
- \{% include shellRoot.htm %} docker pull upsilonproject/drone
+ \root@host: docker pull upsilonproject/drone
 
 Create a new container;
 
- \{% include shellRoot.htm %} docker create --name upsilon-drone -e
+ \root@host: docker create --name upsilon-drone -e
 UPSILON_CONFIG_SYSTEM_AMQPHOST=upsilon.example.com -e
 UPSILON_IDENTIFIER=drone1.example.com upsilonproject/drone
 a73536869670...
@@ -19,11 +19,11 @@ it's ID when created.
 
 Start the container using the new ID;
 
- \{% include shellRoot.htm %} docker start upsilon-drone
+ \root@host: docker start upsilon-drone
 
 We should see the drone start up;
 
- \{% include shellRoot.htm %} docker ps
+ \root@host: docker ps
 
 CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES a73536869670
 upsilonproject/drone "/bin/sh -c /usr/shar" 13 seconds ago Up 3 seconds
@@ -31,7 +31,7 @@ upsilon-drone
 
 Looks good. Lets check the logs;
 
- \{% include shellRoot.htm %} : docker logs upsilon-drone DEBUG Logging
+ \root@host: : docker logs upsilon-drone DEBUG Logging
 override configuration exists, parsing: /etc/upsilon-drone/logging.xml
 INFO Upsilon 2.2.0-0-1505432429 INFO ---------- INFO Identifier:
 drone1.example.com INFO Configuration file does not exist, configuration

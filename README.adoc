@@ -1,14 +1,21 @@
 Upsilon Docs
 ============
-:toc: macro
+:toc: left
+:toclevels: 2
 
 toc::[] 
 
-These are the Upsilon docs.
-
+Introduction
+------------
 image:https://travis-ci.org/upsilonproject/upsilon-docs.svg?branch=master["Build Status", link="https://travis-ci.org/upsilonproject/upsilon-docs"]
 
-include::deployment-environments/index.adoc[Deployment environments]
+These are the Upsilon docs. They are avilable at http://docs.upsilonproject.io[docs.upsilonproject.io] and the https://github.com/upsilonproject/upsilon-docs[upsilon-docs project on GitHub]. You can also http://docs.upsilonproject.io/README.pdf[download a PDF] if that's what what you're into.
+
+To learn more about the Upsilon project, please visit http://www.upsilonproject.io. 
+
+include::deployment-environments/index.adoc[Installation & Deployment]
+
+include::usage/index.adoc[Usage]
 
 include::authentication/index.adoc[Authentication]
 

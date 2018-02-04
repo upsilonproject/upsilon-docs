@@ -1,5 +1,5 @@
-Upsilon all in one CentOS Virtual Machine
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"All in one" CentOS Virtual Machine
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Upsilon can quite happily exist all in a single virtual machine for most
 deployments. You can scale out and change fairly easily after that too,
@@ -21,7 +21,7 @@ Virtual Machine requirements
 * *OS:* CentOS 7, http://centos.org
 * *Firewall:* _see below..._
 
-[width="41%",cols="54%,23%,23%",options="header",]
+[cols="54%,23%,23%",options="header"]
 |=======================================================================
 |Protocol & Port |Source |Reason
 |TCP Port 22 |inbound |SSH inbound traffic - to connect to the VM for
@@ -42,29 +42,27 @@ Install packages and enable dependant services
 Become root on your virtual machine, lets begin :)
 
 ....
-<code>
-{% include shellRoot.htm %} 
-</code>
+root@host:
 ....
 
 Add the upsilon yum repository, and the EPEL repository for CentOS
 (Extra Packages for Enterprise Linux);
 
 ....
-<code>
-{% include shellRoot.htm %} cd /etc/yum.repos.d/ <br />
-{% include shellRoot.htm %} curl -O http://repos.upsilonproject.io/upsilon-rpm-el7/upsilon-rpm-el7.repo<br />
-{% include shellRoot.htm %} rpm -U https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm<br />
-</code>
+
+root@host: cd /etc/yum.repos.d/ 
+root@host: curl -O http://repos.upsilonproject.io/upsilon-rpm-el7/upsilon-rpm-el7.repo
+root@host: rpm -U https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+
 ....
 
 Lets install everything! Dependencies will be installed automatically.
 
 ....
-<code>
-{% include shellRoot.htm %} yum install centos-release-scl<br />
-{% include shellRoot.htm %} yum install upsilon-drone upsilon-web rabbitmq-server mariadb-server httpd mariadb-server<br />
-</code>
+
+root@host: yum install centos-release-scl
+root@host: yum install upsilon-drone upsilon-web rabbitmq-server mariadb-server httpd mariadb-server
+
 ....
 
 Lets start the webserver (httpd), the database server (mariadb), the
@@ -72,19 +70,19 @@ message server (rabbitmq) and make sure they restart on reboot (using
 `enable`);
 
 ....
-<code>
-{% include shellRoot.htm %} systemctl enable httpd mariadb rabbitmq-server<br />
-{% include shellRoot.htm %} systemctl start httpd mariadb rabbitmq-server<br />
-</code>
+
+root@host: systemctl enable httpd mariadb rabbitmq-server
+root@host: systemctl start httpd mariadb rabbitmq-server
+
 ....
 
 Should be no problems so far. Lets open up the port for the web
 interface if it's not already open;
 
 ....
-<code>
-{% include shellRoot.htm %} firewall-cmd --add-service http --permanent
-</code>
+
+root@host: firewall-cmd --add-service http --permanent
+
 ....
 
 [[setup-a-custodian-and-drone]]
@@ -96,9 +94,9 @@ first service that is setup. We've started the database server, but we
 need to load the initial database schema. Lets do that now.
 
 ....
-<code>
-{% include shellRoot.htm %} cd /usr/share/upsilon-database/mysql/<br />
-</code>
+
+root@host: cd /usr/share/upsilon-database/mysql/
+
 ....
 
 There is a "create-database" script in this directory, but that requires
