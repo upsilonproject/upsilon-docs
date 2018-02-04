@@ -1,5 +1,5 @@
-Deployment Environments jobs
-----------------------------
+Deployment Environments
+-----------------------
 
 Overview of deployment options 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

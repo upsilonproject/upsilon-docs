@@ -7,7 +7,7 @@ but this sort of configuration is normally best for playing around,
 testing, kicking the tyres and similar.
 
 This article assumes you know how to install CentOS 7 in a virtual
-machine on your favourite hypervisor, or cloud. Upsilon doens't really
+machine on your favourite hypervisor, or cloud. Upsilon doesn't really
 care where it runs.
 
 [[virtual-machine-requirements]]
@@ -61,7 +61,8 @@ Lets install everything! Dependencies will be installed automatically.
 ....
 
 root@host: yum install centos-release-scl
-root@host: yum install upsilon-drone upsilon-web rabbitmq-server mariadb-server httpd mariadb-server
+root@host: yum install upsilon-drone upsilon-web rabbitmq-server mariadb-server
+httpd mariadb-server php php-pdo php-mysql
 
 ....
 
@@ -85,9 +86,8 @@ root@host: firewall-cmd --add-service http --permanent
 
 ....
 
-[[setup-a-custodian-and-drone]]
-Setup a custodian and drone
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Setup the database
+^^^^^^^^^^^^^^^^^^
 
 The upsilon-custodian "looks after the database" so it's normally the
 first service that is setup. We've started the database server, but we
@@ -100,6 +100,84 @@ root@host: cd /usr/share/upsilon-database/mysql/
 ....
 
 There is a "create-database" script in this directory, but that requires
-a few settings that we. like.
+a few settings that we have not setup. Instead lets just run the following
+commands to import the database;
 
+....
+root@host: mysql -u root -e 'CREATE DATABASE upsilon'
+root@host: mysql -u root upsilon < sql/schema.sql
+root@host: mysql -u root upsilon < sql/initialData.sql
+....
 
+Get the web interface installed
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Now try and visit the web interface; 
+
+http://yourVmIPAddress/upsilon-web/ 
+
+There  isn't anything that exciting in the web interface by default, so lets
+setup a drone so we can start monitoring stuff.
+
+Setup a drone
+^^^^^^^^^^^^^
+
+....
+root@host: cd /etc/upsilon-drone/
+root@host: cp config.xml.sample config.xml
+....
+
+Now change `amqpHost = "localhost"` in config.xml.
+
+....
+root@host: service upsilon-drone restart
+....
+
+Lets try and ping it;
+
+....
+root@host: upsilon-ping -s localhost
+Waiting 3 seconds for responses to pings.
++--------------------------------------+--------------------+------------+
+|              Identifier              |      Version       |    Type    |
++--------------------------------------+--------------------+------------+
+| 5b4e1ec4-ab8d-4f03-88b3-0746f6e5922e | 2.2.0-0-1514431787 | amqp, rest |
++--------------------------------------+--------------------+------------+
+....
+
+Looks good. However, we need a custodian to write results to a database now...
+
+Setup the custodian 
+^^^^^^^^^^^^^^^^^^^
+
+....
+user@root: yum install upsilon-custodian -y
+....
+
+upsilon-custodian should work without any additional configuration, so lets
+start it.
+
+....
+user@root: service upsilon-custodian restart
+....
+
+Lets do another ping to check it came up;
+
+....
+root@host: upsilon-ping -s localhost
+Waiting 3 seconds for responses to pings.
++--------------------------------------+--------------------+------------+
+|              Identifier              |      Version       |    Type    |
++--------------------------------------+--------------------+------------+
+|          upsilon-custodian           |    development     |  db, amqp  |
+| 5b4e1ec4-ab8d-4f03-88b3-0746f6e5922e | 2.2.0-0-1514431787 | amqp, rest |
++--------------------------------------+--------------------+------------+
+....
+
+Start using the web interface
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In the web interface, go to Nodes >> List, you should see the custodian and
+drone show up. If so, you're ready to get going!
+
+Go to [[setting-up-a-service-check]].
