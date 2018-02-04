@@ -1,7 +1,7 @@
 upsilon-docs
 ============
 
-[![Build Status](https://travis-ci.org/upsilonproject/upsilon-docs.svg?branch=master)](https://travis-ci.org/upsilonproject/upsilon-docs)
+image:https://travis-ci.org/upsilonproject/upsilon-docs.svg?branch=master["Build Status", link="https://travis-ci.org/upsilonproject/upsilon-docs"]
 
 The upsilon documentation. :)
 
