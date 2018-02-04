@@ -2,8 +2,6 @@ This is a test
 ==============
 James <james@example.com>
 
-ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-
 :toc:
 
 Hope you like this. If you don't, look at the <<README#,readme page>>.
