@@ -4,7 +4,7 @@ James <james@example.com>
 
 :toc:
 
-Hope you like this. If you don't, look at the <<README#,readme page>>.
+Hope you like this.
 
 
 Code

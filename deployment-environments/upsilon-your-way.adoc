@@ -1,0 +1,18 @@
+Upsilon was designed to not be too presecriptive to the architectire it
+runs on, as everyone has different environments and different
+requirements.
+
+Here are the high level requirements for running Upsilon
+
+* DNS record "upsilon" that points to the AMQP server.
+* Linux environment is largely expected, although parts of Upsilon might
+run on windows or MacOS, this isn't tested really at all at the moment.
+CentOS is used by the project developers, hence CentOS packages are
+available. Debian based or other distributions are likely to work fine
+though.
+
+Here are some other deployment configurations that are known to work;
+
+* Using 1 uspilon serivce to 1 docker container, then deploying on
+OpenShift, or docker on it's own.
+* Deploying every service inside a virtual machine.

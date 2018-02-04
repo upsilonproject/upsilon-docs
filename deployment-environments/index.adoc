@@ -1,0 +1,15 @@
+Deployment Environments
+-----------------------
+
+Overview of deployment options 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* link:[All in one CentOS Virtual Machine] (~20 minutes)
+* Upsilon on OpenShift (~5 minutes)
+
+include::upsilon-allinone-centos.adoc[]
+include::upsilon-on-openshift.adoc[]
+include::upsilon-ansible.adoc[]
+include::upsilon-your-way.adoc[]
+
+
