@@ -1,5 +1,5 @@
-Upsilon Docs
-============
+Upsilon Project Documentation
+=============================
 :toc: left
 :toclevels: 2
 
@@ -27,6 +27,8 @@ from there!
 
 
 include::deployment-environments/index.adoc[Installation & Deployment]
+
+include::services/overview.adoc[Services]
 
 include::usage/index.adoc[Usage]
 
