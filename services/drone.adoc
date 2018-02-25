@@ -1,0 +1,24 @@
+Drone
+~~~~~
+
+upsilon-drone runs the service checks.
+
+==== Configuration
+
+===== Autoconfiguration
+
+upsilon-drone will look for the following environment variables on startup;
+
+|=======================================================================
+| Environment Variable | Example          | Description                |
+|=======================================================================
+| `UPSILON_IDENTIFIER` | test.example.com | The unique identifier for the node 
+| `UPSILON_CONFIG_SYSTEM_AMQPHOST` | amqp.example.com | The address of the AMQP
+Server 
+|=======================================================================
+
+===== config.xml
+
+upsilon-drone can be manually configured by a simple config.xml file, usually installed at
+`/etc/upsilon-drone/config.xml` on most platforms. This is necessary if you
+don't want to use central configuration management for some reason.
