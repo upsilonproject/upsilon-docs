@@ -1,0 +1,18 @@
+Database
+~~~~~~~~
+
+[[import-the-schema-and-the-initial-database]]
+Import the schema and the initial database
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+From this overview screen, you'll want to wait for the upsilon-web pod
+to come up sucessfully. This may take a couple of minutes.
+
+Create the initial database using the create-database script.
+
+....
+user@host: cd /usr/share/upsilon-database/mysql/
+user@host: ./create-database
+....
+
+

@@ -14,7 +14,7 @@ Create a OpenShift project for Upsilon
 
 Call it anything you like!
 
-image:resources/images/articles/upsilon-on-openshift-create-project.png[create
+image:images/upsilon-on-openshift-create-project.png[create
 project]
 
 [[upload-the-upsilon-application-template-to-openshift]]
@@ -29,9 +29,9 @@ On your local workstation, clone this repository:
 
 ....
 
-user@host: <strong>mkdir upsilon-sandbox && cd upsilon-sandbox</strong>
-user@host: <strong>git clone https://github.com/upsilonproject/upsilon-on-openshift.git</strong>
-user@host: <strong>cd upsilon-on-openshift</strong>
+user@host: mkdir upsilon-sandbox && cd upsilon-sandbox
+user@host: git clone https://github.com/upsilonproject/upsilon-on-openshift.git
+user@host: cd upsilon-on-openshift
 
 ....
 
@@ -39,49 +39,27 @@ Login to OpenShift using the command line tool and upload the
 application template.
 
 ....
-user@host: <strong>oc new-project upsilon-on-openshift</strong>
-user@host: <strong>oc status</strong>
+user@host: oc new-project upsilon-on-openshift
+user@host: oc status
 In project Upsilon on OpenShift (upsilon-on-openshift) on server https://openshift.example.com:8443
 
 You have no services, deployment configs, or build configs.
 Run 'oc new-app' to create an application.
 
-user@host: <strong>oc create -f upsilon-on-openshift.yaml</strong>
+user@host: oc create -f upsilon-on-openshift.yaml
 ....
 
 
 The application template should complete successfully, and you should be
 able to browse and find Upsilon in the OpenShift catalog;
 
-image:resources/images/articles/upsilon-on-openshift-add-to-project.png[add to project]
+image:images/upsilon-on-openshift-add-to-project.png[add to project]
 
-image:resources/images/articles/upsilon-on-openshift-deploy-from-catalog.png[deploy from catalog]
+image:images/upsilon-on-openshift-deploy-from-catalog.png[deploy from catalog]
 
 You can change some of the deployment options before starting the
 deployment, but the defaults are fine.
 
-image:resources/images/articles/upsilon-on-openshift-deploymentStarting.png[deployment starting]
-
-[[import-the-schema-and-the-initial-database]]
-Import the schema and the initial database
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-From this overview screen, you'll want to wait for the upsilon-web pod
-to come up sucessfully. This may take a couple of minutes.
-
-Create the initial database using the create-database script.
-
-....
-user@host: <strong>cd /usr/share/upsilon-database/mysql/</strong>
-user@host: <strong>./create-database</strong>
-....
-
-
-[[go-to-the-web-application]]
-Go to the web application
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Click on the upsilon-web route to
-link:start%20the%20installer[upsilon-web-installer].
+image:images/upsilon-on-openshift-deploymentStarting.png[deployment starting]
 
 

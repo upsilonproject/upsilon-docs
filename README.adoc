@@ -28,6 +28,8 @@ from there!
 
 include::deployment-environments/index.adoc[Installation & Deployment]
 
+include::setup/index.adoc[Setup]
+
 include::usage/index.adoc[Usage]
 
 include::authentication/index.adoc[Authentication]

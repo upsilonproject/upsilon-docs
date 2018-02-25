@@ -1,8 +1,8 @@
-Deployment Environments
------------------------
+Install (Deployment Environments)
+---------------------------------
 
-Overview of deployment options 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Overview of deployment environments 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * Upsilon all-in-one on a CentOS Virtual Machine (~20 minutes)
 * Upsilon on OpenShift (~5 minutes)

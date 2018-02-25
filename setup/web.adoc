@@ -1,0 +1,12 @@
+Web initial install
+~~~~~~~~~~~~~~~~~~~
+
+[[go-to-the-web-application]]
+Go to the web application
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Click on the upsilon-web route to
+link:start%20the%20installer[upsilon-web-installer].
+
+<<<
+
