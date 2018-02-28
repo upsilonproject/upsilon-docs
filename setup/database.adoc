@@ -1,20 +1,30 @@
 Database
 ~~~~~~~~
 
-[[import-the-schema-and-the-initial-database]]
-Import the schema and the initial database
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+When MySQL is setup, it will not be setup automatically with the upsilon database. We need to set that up manually using a couple of scripts.
 
-From this overview screen, you'll want to wait for the upsilon-web pod
-to come up sucessfully. This may take a couple of minutes.
+If you are running on a Linux machine (without containers);
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Create the initial database using the create-database script.
+Make sure the `upsilon-database-sql` package is installed.
+
+....
+user@host: yum install upsilon-database-sql
+....
+
+If you are running inside a Linux container (like OpenShift);
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The upsilon-web container image contains the database installer. You just need to launch a shell inside this container to run the initial database setup.
+
+Create the database
+^^^^^^^^^^^^^^^^^^^
+
+Create the initial database using the `create-database` script.
 
 ....
 user@host: cd /usr/share/upsilon-database/mysql/
 user@host: ./create-database
 ....
-
-NOTE: If you are running inside containers (like with OpenShift), the upsilon-web container image contains the database installer. You just need to launch a shell inside this container to run the initial database setup.
 
 

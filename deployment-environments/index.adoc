@@ -1,8 +1,12 @@
 Install (Deployment Environments)
 ---------------------------------
 
+This section could be called **installation options**, as it presents a couple of different options to install Upsilon. However, it's probably a bit more correct to think of these as "deployment environments" so that is the terminology used by this documentation. 
+
 Overview of deployment environments 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Here are a set of common deployment environments. It's important to know that you **can change**, scale and upgrade Upsilon later on as well - the architecture is such that if you start off in a single virtual machine but later decide to go "full on with containers" (!) you can do that without too much hassle. See link:#upgrading[the upgrading section] for more information.
 
 * Upsilon all-in-one on a CentOS Virtual Machine (~20 minutes)
 * Upsilon on OpenShift (~5 minutes)

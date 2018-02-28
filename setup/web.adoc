@@ -52,16 +52,12 @@ later too.
 
 image::images/screenshots/web-installer-admin.png[]
 
-Connect upsilon-web to the database
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 Get a drone to start reporting into the database
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 upsilon-web is heavily reliant on the database, and it needs at least one drone
 to be reported to the database. Here's how the architecture works;
 
-[caption = "fooo"]
 image:images/diagrams/drone-custodian-web-architecture.png[Architecture]
 
 More stuff on this later.

@@ -62,4 +62,5 @@ deployment, but the defaults are fine.
 
 image:images/screenshots/upsilon-on-openshift-deploymentStarting.png[deployment starting]
 
+When the pods deploy successfully, continue to the link:#_setup[Setup] section of this manual.
 

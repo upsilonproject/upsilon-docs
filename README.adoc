@@ -32,18 +32,19 @@ link:https://github.com/upsilonproject/upsilon-docs/issues/new[**tell us how to 
 documentation**] by raising an issue ticket against the docs and we'll take it
 from there!
 
+include::services/overview.adoc[Services & Introduction]
 
 include::deployment-environments/index.adoc[Installation & Deployment]
 
 include::setup/index.adoc[Setup]
 
-include::services/overview.adoc[Services]
-
 include::usage/index.adoc[Usage]
 
-include::authentication/index.adoc[Authentication]
+include::integration/index.adoc[Integration]
 
 include::commonissues.adoc[Common Issues]
+
+include::upgrading.adoc[Upgrading]
 
 include::appendix.adoc[Appendix]
 

@@ -8,4 +8,4 @@ Database Issues
 
 image::images/screenshots/web-install-nosettingstable.png[]
 
-You need to link:#import-the-schema-and-the-initial-database[import the schema and the initial database].
+You need to link:#_database[setup the database].
