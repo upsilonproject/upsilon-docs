@@ -9,12 +9,11 @@ upsilon-drone runs the service checks.
 
 upsilon-drone will look for the following environment variables on startup;
 
+[options = "header"]
 |=======================================================================
-| Environment Variable | Example          | Description                |
-|=======================================================================
-| `UPSILON_IDENTIFIER` | test.example.com | The unique identifier for the node 
-| `UPSILON_CONFIG_SYSTEM_AMQPHOST` | amqp.example.com | The address of the AMQP
-Server 
+| Environment Variable | Example          | Description                
+| `UPSILON_IDENTIFIER` | test.example.com | The unique identifier for the node
+| `UPSILON_CONFIG_SYSTEM_AMQPHOST` | amqp.example.com | The address of the AMQP Server 
 |=======================================================================
 
 ===== config.xml

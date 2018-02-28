@@ -1,0 +1,13 @@
+digraph G {
+	node[shape=none]
+	rabbitmq[image="images/icons/rabbitmq.png" label = ".\n\nrabbitmq"]
+	drone, custodian, web [image="images/icons/upsilon.png"]
+	mariadb [image="images/icons/mariadb.png"]
+
+	drone -> rabbitmq [label = "1. Sends updates to\n the message bus"]
+	rabbitmq -> custodian [label = "2. Custodian recieves messages"]
+	custodian -> mariadb [label = "3. Stores messages\n in the database"]
+	mariadb -> web [label = "4. web reads the DB"]
+	web -> rabbitmq [label = "5. user administers drone"]
+	rabbitmq-> drone [label = "6. messages sent\n to drone"]
+}

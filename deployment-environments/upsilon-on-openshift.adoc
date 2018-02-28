@@ -14,7 +14,7 @@ Create a OpenShift project for Upsilon
 
 Call it anything you like!
 
-image:images/upsilon-on-openshift-create-project.png[create
+image:images/screenshots/upsilon-on-openshift-create-project.png[create
 project]
 
 [[upload-the-upsilon-application-template-to-openshift]]
@@ -53,13 +53,13 @@ user@host: oc create -f upsilon-on-openshift.yaml
 The application template should complete successfully, and you should be
 able to browse and find Upsilon in the OpenShift catalog;
 
-image:images/upsilon-on-openshift-add-to-project.png[add to project]
+image:images/screenshots/upsilon-on-openshift-add-to-project.png[add to project]
 
-image:images/upsilon-on-openshift-deploy-from-catalog.png[deploy from catalog]
+image:images/screenshots/upsilon-on-openshift-deploy-from-catalog.png[deploy from catalog]
 
 You can change some of the deployment options before starting the
 deployment, but the defaults are fine.
 
-image:images/upsilon-on-openshift-deploymentStarting.png[deployment starting]
+image:images/screenshots/upsilon-on-openshift-deploymentStarting.png[deployment starting]
 
 

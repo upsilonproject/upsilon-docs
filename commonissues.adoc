@@ -1,0 +1,11 @@
+Common Issues
+-------------
+
+Database Issues
+~~~~~~~~~~~~~~~
+
+#### web database install, Settings table does not exist
+
+image::images/screenshots/web-install-nosettingstable.png[]
+
+You need to link:#import-the-schema-and-the-initial-database[import the schema and the initial database].

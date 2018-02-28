@@ -1,12 +1,67 @@
 Web initial install
 ~~~~~~~~~~~~~~~~~~~
 
-[[go-to-the-web-application]]
-Go to the web application
-^^^^^^^^^^^^^^^^^^^^^^^^^
+#### Launching the installer
 
-Click on the upsilon-web route to
-link:start%20the%20installer[upsilon-web-installer].
+upsilon-web will automatically launch the web installer if it cannot find a
+config.php file. This happens when upsilon-web is initially installed (or it's
+config file has been deleted).  
 
-<<<
+This is what the upsilon-web installer looks like;
 
+image::images/screenshots/web-installer-firststart.png[]
+
+#### System tests
+
+Various common tests will run to check that upsilon-web can be installed
+correctly. Everything should be green with a `PASS` in order to continue.
+
+Most of these issues require additional packages to be installed, for example
+the `pdoAvailable` check can be fixed by doing `yum install php-pdo` on some
+systems.
+
+#### Generate config.php
+
+##### Database
+
+When all the system tests have passed, you need to then configure the database
+connection. 
+
+[options="header"]
+|==============================================================================
+| Field          | Example                              | Description  
+| DSN            | `mysql:host=myserver;dbname=upsilon` | See http://php.net/manual/en/pdo.construct.php for more information.
+| Database user  | `admin`                              | The username of the user that the web interface will use to connect to the database.
+| Database pass  | `toomanysecrets`                     | The password for your database username.
+|==============================================================================
+
+NOTE:  In some environments like OpenShift the username and password can be automatically completed for you as shown below. In other cases, you must specify the username and password of an existing MySQL user, or use the root user.
+
+[caption="The web installer screen showing the database setup"]
+image::images/screenshots/web-installer-database.png[]
+
+**Common Issues**
+
+* asdf
+
+##### First administrator
+
+The default first admin is `admin`, but you can change that here and set a
+password that you like as well. Additional administrators can be configured
+later too.
+
+image::images/screenshots/web-installer-admin.png[]
+
+Connect upsilon-web to the database
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Get a drone to start reporting into the database
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+upsilon-web is heavily reliant on the database, and it needs at least one drone
+to be reported to the database. Here's how the architecture works;
+
+[caption = "fooo"]
+image:images/diagrams/drone-custodian-web-architecture.png[Architecture]
+
+More stuff on this later.

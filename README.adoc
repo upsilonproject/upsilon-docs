@@ -1,7 +1,11 @@
 Upsilon Project Documentation
 =============================
+:docinfo: shared
+:title: Upsilon Docs
 :toc: left
 :toclevels: 2
+:sectanchors:
+:sectlinks:
 
 toc::[] 
 
@@ -38,6 +42,8 @@ include::services/overview.adoc[Services]
 include::usage/index.adoc[Usage]
 
 include::authentication/index.adoc[Authentication]
+
+include::commonissues.adoc[Common Issues]
 
 include::appendix.adoc[Appendix]
 
