@@ -62,8 +62,7 @@ Lets install everything! Dependencies will be installed automatically.
 ....
 
 root@host: yum install centos-release-scl
-root@host: yum install upsilon-drone upsilon-web rabbitmq-server mariadb-server
-httpd mariadb-server php php-pdo php-mysql
+root@host: yum install upsilon-drone upsilon-web rabbitmq-server mariadb-server httpd mariadb-server php php-pdo php-mysql
 
 ....
 
