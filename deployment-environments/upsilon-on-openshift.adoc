@@ -1,3 +1,4 @@
+[[onopenshift]]
 Upsilon on OpenShift
 ~~~~~~~~~~~~~~~~~~~~
 

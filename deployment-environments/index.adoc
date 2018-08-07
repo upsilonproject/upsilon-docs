@@ -8,11 +8,11 @@ Overview of deployment environments
 
 Here are a set of common deployment environments. It's important to know that you **can change**, scale and upgrade Upsilon later on as well - the architecture is such that if you start off in a single virtual machine but later decide to go "full on with containers" (!) you can do that without too much hassle. See link:#upgrading[the upgrading section] for more information.
 
-* Upsilon all-in-one on a CentOS Virtual Machine (~20 minutes)
-* Upsilon on OpenShift (~5 minutes)
+* link:#allinone[Upsilon all-in-one on a CentOS Virtual Machine] (~20 minutes)
+* link:#onopenshift[Upsilon on OpenShift] (~5 minutes)
 * Upsilon in docker Containers (~10 minutes)
-* Upsilon with Ansible (advanced installation)
-* Upsilon your way... (advanced installation)
+* link:#upsilon-ansible[Upsilon with Ansible] (advanced installation)
+* link:#yourway[Upsilon your way...] (advanced installation)
 
 include::upsilon-allinone-centos.adoc[]
 include::upsilon-on-openshift.adoc[]

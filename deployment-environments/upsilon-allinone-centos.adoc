@@ -1,3 +1,4 @@
+[[allinone]]
 "All in one" CentOS Virtual Machine
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

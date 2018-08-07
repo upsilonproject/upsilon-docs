@@ -1,3 +1,4 @@
+[[upsilon-ansible]]
 Upsilon with Ansible
 ~~~~~~~~~~~~~~~~~~~~
 
