@@ -1,5 +1,5 @@
-Web initial install
-~~~~~~~~~~~~~~~~~~~
+Upsilon Web setup (initial installer)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #### Launching the installer
 

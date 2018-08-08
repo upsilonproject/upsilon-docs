@@ -94,27 +94,26 @@ root@host: firewall-cmd --add-service http --permanent
 
 ....
 
-Setup the database
-^^^^^^^^^^^^^^^^^^
+Create a "upsilon" DNS record
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The upsilon-custodian "looks after the database" so it's normally the
-first service that is setup. We've started the database server, but we
-need to load the initial database schema. Lets do that now.
+Many of the upsilon services rely on a DNS record called "upsilon" to find the messaging server, and perform auto-configuration.
 
-....
-
-root@host: cd /usr/share/upsilon-database/mysql/
+Because this a all in one virtual machine, we can simply edit the hosts file. Open `/etc/hosts` and add "upsilon" as a name for localhost;
 
 ....
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4 upsilon
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6 upsilon
+....
 
-There is a "create-database" script in this directory, but that requires
-a few settings that we have not setup. Instead lets just run the following
-commands to import the database;
+You should be able to `ping upsilon` if you have done this correctly.
 
 ....
-root@host: mysql -u root -e 'CREATE DATABASE upsilon'
-root@host: mysql -u root upsilon < sql/schema.sql
-root@host: mysql -u root upsilon < sql/initialData.sql
+[root@upsilon-allinone upsilon-drone]# ping upsilon
+PING localhost (127.0.0.1) 56(84) bytes of data.
+64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.023 ms
+64 bytes from localhost (127.0.0.1): icmp_seq=2 ttl=64 time=0.048 ms
+...
 ....
 
 Get the web interface installed
@@ -124,18 +123,20 @@ Now try and visit the web interface;
 
 http://yourVmIPAddress/upsilon-web/ 
 
-There  isn't anything that exciting in the web interface by default, so lets
+There isn't anything that exciting in the web interface by default, so lets
 setup a drone so we can start monitoring stuff.
 
 Setup a drone
 ^^^^^^^^^^^^^
+
+The upsilon-drone service ships with a "sample" configuration file that is ready to use in this simple deployment;
 
 ....
 root@host: cd /etc/upsilon-drone/
 root@host: cp config.xml.sample config.xml
 ....
 
-Now change `amqpHost = "localhost"` in config.xml.
+We should now start the drone, which should pick up the configuration file
 
 ....
 root@host: service upsilon-drone restart
@@ -144,7 +145,7 @@ root@host: service upsilon-drone restart
 Lets try and ping it;
 
 ....
-root@host: upsilon-ping -s localhost
+root@host: upsilon-ping
 Waiting 3 seconds for responses to pings.
 +--------------------------------------+--------------------+------------+
 |              Identifier              |      Version       |    Type    |

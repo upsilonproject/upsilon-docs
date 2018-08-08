@@ -1,7 +1,8 @@
+[setup-db]
 Database
 ~~~~~~~~
 
-When MySQL is setup, it will not be setup automatically with the upsilon database. We need to set that up manually using a couple of scripts.
+When MySQL is installed, it will not be setup automatically with the upsilon database. We need to set that up manually using a couple of scripts.
 
 If you are running on a Linux machine (without containers);
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -10,6 +11,18 @@ Make sure the `upsilon-database-sql` package is installed.
 
 ....
 user@host: yum install upsilon-database-sql
+....
+
+....
+root@host: cd /usr/share/upsilon-database/mysql/
+....
+
+There is a "create-database" script in this directory, but that requires a few settings that we have not setup. Instead lets just run the following commands to import the database;
+
+....
+root@host: mysql -u root -e 'CREATE DATABASE upsilon'
+root@host: mysql -u root upsilon < sql/schema.sql
+root@host: mysql -u root upsilon < sql/initialData.sql
 ....
 
 If you are running inside a Linux container (like OpenShift);
@@ -26,5 +39,4 @@ Create the initial database using the `create-database` script.
 user@host: cd /usr/share/upsilon-database/mysql/
 user@host: ./create-database
 ....
-
 
