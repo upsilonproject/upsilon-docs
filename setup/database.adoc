@@ -13,8 +13,10 @@ Make sure the `upsilon-database-sql` package is installed.
 user@host: yum install upsilon-database-sql
 ....
 
+Go into the database setup directory that is created for you;
+
 ....
-root@host: cd /usr/share/upsilon-database/mysql/
+root@host: cd /usr/share/upsilon-database-sql/mysql/
 ....
 
 There is a "create-database" script in this directory, but that requires a few settings that we have not setup. Instead lets just run the following commands to import the database;
@@ -36,7 +38,7 @@ Create the database
 Create the initial database using the `create-database` script.
 
 ....
-user@host: cd /usr/share/upsilon-database/mysql/
+user@host: cd /usr/share/upsilon-database-sql/mysql/
 user@host: ./create-database
 ....
 

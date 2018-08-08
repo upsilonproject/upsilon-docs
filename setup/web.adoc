@@ -52,12 +52,31 @@ later too.
 
 image::images/screenshots/web-installer-admin.png[]
 
-Get a drone to start reporting into the database
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Setup the custodian 
+^^^^^^^^^^^^^^^^^^^
 
-upsilon-web is heavily reliant on the database, and it needs at least one drone
-to be reported to the database. Here's how the architecture works;
+....
+user@root: yum install upsilon-custodian -y
+....
 
-image:images/diagrams/drone-custodian-web-architecture.png[Architecture]
+upsilon-custodian should work without any additional configuration, so lets
+start it.
 
-More stuff on this later.
+....
+user@root: service upsilon-custodian restart
+....
+
+Lets do another ping to check it came up;
+
+....
+root@host: upsilon-ping -s localhost
+Waiting 3 seconds for responses to pings.
++--------------------------------------+--------------------+------------+
+|              Identifier              |      Version       |    Type    |
++--------------------------------------+--------------------+------------+
+|          upsilon-custodian           |    development     |  db, amqp  |
+| 5b4e1ec4-ab8d-4f03-88b3-0746f6e5922e | 2.2.0-0-1514431787 | amqp, rest |
++--------------------------------------+--------------------+------------+
+....
+
+
