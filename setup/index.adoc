@@ -8,3 +8,4 @@ This section is about how to setup Upsilon once it is installed.
 include::database.adoc[Database setup]
 include::web.adoc[upsilon-web install]
 include::drone.adoc[Drone]
+include::custodian.adoc[Custodian]
