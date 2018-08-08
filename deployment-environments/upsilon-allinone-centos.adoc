@@ -57,6 +57,14 @@ root@host: rpm -U https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.no
 
 ....
 
+For RHEL, you need to enable the following repositories;
+
+....
+root@host: subscription-manager --enable 'rhel-7-server-rpms'
+root@host: subscription-manager --enable 'rhel-7-server-extras-rpms'
+root@host: subscription-manager --enable 'rhel-7-server-optional-rpms'
+....
+
 Lets install everything! Dependencies will be installed automatically.
 
 ....
