@@ -6,6 +6,7 @@ Upsilon Project Documentation
 :toclevels: 2
 :sectanchors:
 :sectlinks:
+:favicon: logo96pxdarkbg.webp
 
 toc::[] 
 
