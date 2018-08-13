@@ -20,7 +20,7 @@ after_failure:
   - docker logs asciidoc-to-pdf
 
 after_success:      
-  - cd output ; mv README.html index.html ; cp -R ../images images ; echo "docs.upsilonproject.io" > CNAME ; mv README.pdf "upsilon-docs.pdf"
+  - cd output ; mv README.html index.html ; cp ../logo96pxdarkbg.webp ./ ; cp -R ../images images ; echo "docs.upsilonproject.io" > CNAME ; mv README.pdf "upsilon-docs.pdf"
   - git init
   - git config user.name "${GH_USER_NAME}"
   - git config user.email "{GH_USER_EMAIL}"
