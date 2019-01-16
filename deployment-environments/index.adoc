@@ -16,6 +16,7 @@ Here are a set of common deployment environments. It's important to know that yo
 
 include::upsilon-allinone-centos.adoc[]
 include::upsilon-on-openshift.adoc[]
+include::upsilon-docker.adoc[]
 include::upsilon-ansible.adoc[]
 include::upsilon-your-way.adoc[]
 

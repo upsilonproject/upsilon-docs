@@ -1,5 +1,5 @@
-Setup a drone
-~~~~~~~~~~~~~
+Drone
+~~~~~
 
 upsilon-drone is the workhorse of Upsilon, and you need at least one drone to get anything done.
 
