@@ -1,0 +1,26 @@
+Grafana
+~~~~~~~
+
+Grafana can quite happily read from the Upsilon MySQL database and show lots of
+information. The easiest way to probably do this is create a couple of SQL
+Views that make building Grafana queries a little easier.
+
+=== Services Dashboard
+
+image:images/screenshots/grafana-services-overview.png[Services Overview]
+
+==== SQL View
+
+    create view `grafana_services` as select id, identifier, lastUpdated, node, case karma when 'GOOD' THEN 3 WHEN 'BAD' THEN 0 WHEN 'UNKNOWN' THEN 1 WHEN 'OLD' THEN 2 ELSE '?' END karma, karma AS karmaDescription FROM services;
+
+==== Grafana Data Source Query (MySQL)
+
+image:images/screenshots/grafana-services-overview-data-source.png[Data source]
+
+==== Grafana Table view
+
+Use normal settings for table column headers.
+
+Here is how you setup the karma column highlighting. 
+
+image:images/screenshots/grafana-table-karma-column.png[Table karma Column]
