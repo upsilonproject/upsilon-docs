@@ -1,6 +1,8 @@
 Integration
 -----------
 
+include::grafana.adoc[Grafana]
+
 Authentication
 ~~~~~~~~~~~~~~
 
