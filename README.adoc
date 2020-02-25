@@ -21,8 +21,8 @@ You can also http://docs.upsilonproject.io/upsilon-docs.pdf[download a PDF] if t
 
 To learn more about the Upsilon project, please visit http://www.upsilonproject.io. 
 
-Help us improve this documentation!
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Help improve this documentation!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 This documentation is written in a very simple human-readable language called
 link:http://www.methods.co.nz/asciidoc/[AsciiDoc]. This means basically anyone
 can make changes and improvements by just visiting the GitHub repository for
