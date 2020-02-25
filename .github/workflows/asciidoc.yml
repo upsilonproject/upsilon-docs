@@ -23,5 +23,5 @@ jobs:
       with: 
         deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
       env:
-        PUBLISH_BRANCH: gh-pages
+        PUBLISH_BRANCH: gh-pages-githubactions
         PUBLISH_DIR: ./
