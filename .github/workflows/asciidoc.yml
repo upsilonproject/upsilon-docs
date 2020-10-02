@@ -22,6 +22,5 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with: 
         deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-      env:
-        PUBLISH_BRANCH: gh-pages-githubactions
-        PUBLISH_DIR: ./
+        publish_branch: gh-pages-githubactions
+        publish_dir: ./
