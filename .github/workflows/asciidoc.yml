@@ -15,7 +15,7 @@ jobs:
       id: adocbuild
       uses: avattathil/asciidoctor-action@master
       with:
-          program: "asciidoctor -D docs --backend=html5 -o index.html README.adoc"
+          program: "asciidoctor -D docs -a stylesheet=style.css --backend=html5 -o index.html README.adoc"
     - name: Print execution time
       run: echo "Time ${{ steps.adocbuild.outputs.time }}"
     - name: Deploy docs to ghpages
