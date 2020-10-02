@@ -16,8 +16,8 @@ jobs:
       uses: avattathil/asciidoctor-action@master
       with:
           program: "asciidoctor -D docs -a stylesheet=style.css --backend=html5 -o index.html README.adoc"
-    - name: Print execution time
-      run: echo "Time ${{ steps.adocbuild.outputs.time }}"
+    - name: Setup CNAME
+      run: echo "docs.upsilonproject.io" > docs/CNAME
     - name: Deploy docs to ghpages
       uses: peaceiris/actions-gh-pages@v3
       with: 
