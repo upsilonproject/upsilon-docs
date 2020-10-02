@@ -1,5 +1,5 @@
 default: graphviz-diagrams
-	asciidoctor README.adoc
+	asciidoctor -a stylesheet=style.css README.adoc
 
 graphviz-diagrams:
 	mkdir -p images/diagrams/

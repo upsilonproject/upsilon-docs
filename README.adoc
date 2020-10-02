@@ -1,7 +1,7 @@
-Upsilon Project Documentation
-=============================
+Upsilon Docs
+============
 :docinfo: shared
-:title: Upsilon Docs
+:title: Upsilon Project Documentation
 :toc: left
 :toclevels: 2
 :sectanchors:

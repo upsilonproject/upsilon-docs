@@ -1,5 +1,5 @@
 [[yourway]]
-Upsilon your Way...
+Upsilon your way...
 ~~~~~~~~~~~~~~~~~~~
 
 Upsilon was designed to not be too presecriptive to the architectire it
