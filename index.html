@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<link rel="icon" type="image/webp" href="logo96pxdarkbg.webp">
+<title>Upsilon Project Documentation</title>
+<style>
+body {
+	font-family: sans-serif;
+	line-height: 1.5;
+	padding: 0;
+	margin: 0;
+}
+
+.article {
+	display: grid;
+	grid-template-areas: "nav content";
+	grid-template-columns: 20em 1fr;
+	grid-template-rows: auto;
+}
+
+a {
+	text-decoration: none;
+}
+
+#header {
+	background-color: #444;
+	grid-area: nav;
+}
+
+#toc {
+	padding: 1em;
+}
+
+#toc a {
+	color: white;
+}
+
+#toc li {
+	padding-bottom: .6em;
+}
+
+#toc ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#toc ul ul {
+	padding-left: 1.4em;
+}
+
+#toctitle {
+	font-weight: bold;
+	color: white;
+}
+
+h1 {
+	font-size: 1.4em;
+	background-color: black;
+	padding: .6em;
+	margin: 0;
+	color: white;
+}
+
+#toc a:hover {
+	background-color: maroon;
+}
+
+#content {
+	background-color: white;
+	grid-area: content;
+	max-width: 1000px;
+	padding: 1em;
+	margin: auto;
+}
+
+#content img {
+	max-width: 100%;
+}
+
+pre {
+	background-color: #f7f7f8;
+	padding: 1em;
+	word-wrap: break-word;
+	white-space: pre-wrap;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+td, th {
+	border: 1px solid gray;
+	padding: .4em;
+}
+
+th {
+	background-color: #f9f9f9;
+	text-align: left;
+}
+
+
+</style>
+</head>
+<body class="article toc2 toc-left">
+<div id="header">
+<h1>Upsilon Docs</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_introduction">Introduction</a>
+<ul class="sectlevel2">
+<li><a href="#_help_improve_this_documentation">Help improve this documentation!</a></li>
+</ul>
+</li>
+<li><a href="#_services_introduction">Services &amp; Introduction</a>
+<ul class="sectlevel2">
+<li><a href="#_architecture_overview">Architecture Overview</a></li>
+<li><a href="#_drone">Drone</a></li>
+<li><a href="#_web">Web</a></li>
+<li><a href="#_reactor">Reactor</a></li>
+<li><a href="#_custodian">Custodian</a></li>
+</ul>
+</li>
+<li><a href="#_installation">Installation</a>
+<ul class="sectlevel2">
+<li><a href="#_deployment_environments">Deployment Environments</a></li>
+<li><a href="#allinone">"All in one" CentOS Virtual Machine</a></li>
+<li><a href="#onopenshift">Upsilon on OpenShift</a></li>
+<li><a href="#ondocker">Upsilon on Docker</a></li>
+<li><a href="#upsilon-ansible">Upsilon with Ansible</a></li>
+<li><a href="#yourway">Upsilon your way&#8230;&#8203;</a></li>
+</ul>
+</li>
+<li><a href="#_setup">Setup</a>
+<ul class="sectlevel2">
+<li><a href="#_database">Database</a></li>
+<li><a href="#_web_2">Web</a></li>
+<li><a href="#_drone_2">Drone</a></li>
+<li><a href="#_custodian_2">Custodian</a></li>
+</ul>
+</li>
+<li><a href="#_usage">Usage</a>
+<ul class="sectlevel2">
+<li><a href="#_setting_up_a_service_check">Setting up a service check</a></li>
+</ul>
+</li>
+<li><a href="#_integration">Integration</a>
+<ul class="sectlevel2">
+<li><a href="#_grafana">Grafana</a></li>
+<li><a href="#_authentication">Authentication</a></li>
+</ul>
+</li>
+<li><a href="#_common_issues">Common Issues</a>
+<ul class="sectlevel2">
+<li><a href="#_database_issues">Database Issues</a></li>
+</ul>
+</li>
+<li><a href="#_upgrading">Upgrading</a></li>
+<li><a href="#_appendix">Appendix</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<!-- toc disabled -->
+</div>
+</div>
+<div class="sect1">
+<h2 id="_introduction"><a class="anchor" href="#_introduction"></a><a class="link" href="#_introduction">Introduction</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><span class="image"><a class="image" href="https://travis-ci.org/upsilonproject/upsilon-docs"><img src="https://travis-ci.org/upsilonproject/upsilon-docs.svg?branch=master" alt="Build Status"></a></span></p>
+</div>
+<div class="paragraph">
+<p>These are the Upsilon docs. They are available at
+<a href="http://docs.upsilonproject.io">docs.upsilonproject.io</a> and the
+<a href="https://github.com/upsilonproject/upsilon-docs">upsilon-docs project on GitHub</a>.
+You can also <a href="http://docs.upsilonproject.io/upsilon-docs.pdf">download a PDF</a> if that&#8217;s what you&#8217;re into.</p>
+</div>
+<div class="paragraph">
+<p>To learn more about the Upsilon project, please visit <a href="http://www.upsilonproject.io" class="bare">http://www.upsilonproject.io</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="_help_improve_this_documentation"><a class="anchor" href="#_help_improve_this_documentation"></a><a class="link" href="#_help_improve_this_documentation">Help improve this documentation!</a></h3>
+<div class="paragraph">
+<p>This documentation is written in a very simple human-readable language called
+<a href="http://www.methods.co.nz/asciidoc/">AsciiDoc</a>. This means basically anyone
+can make changes and improvements by just visiting the GitHub repository for
+the documentation raise a GitHub pull request against your own feature branch.</p>
+</div>
+<div class="paragraph">
+<p>If you don&#8217;t know how to do that, please just
+<a href="https://github.com/upsilonproject/upsilon-docs/issues/new"><strong>tell us how to improve
+documentation</strong></a> by raising an issue ticket against the docs and we&#8217;ll take it
+from there!</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_services_introduction"><a class="anchor" href="#_services_introduction"></a><a class="link" href="#_services_introduction">Services &amp; Introduction</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_architecture_overview"><a class="anchor" href="#_architecture_overview"></a><a class="link" href="#_architecture_overview">Architecture Overview</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#_drone">Drone</a> - The drone is the main worker, it run service checks and collects results.</p>
+</li>
+<li>
+<p><a href="#_web">Web</a> - The web interface provides a graphical dashboards, and administrator command and control.</p>
+</li>
+<li>
+<p>MobileWeb - A native Android application with shortcuts for the web application, as as the ability to recieve notifications from reactors.</p>
+</li>
+<li>
+<p><a href="#_reactor">Reactor</a> - Alerting and notifications.</p>
+</li>
+<li>
+<p><a href="#_custodian">Custodian</a> - Provides an API on top of the database.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/diagrams/drone-custodian-web-architecture.png" alt="Architecture"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_drone"><a class="anchor" href="#_drone"></a><a class="link" href="#_drone">Drone</a></h3>
+<div class="paragraph">
+<p>upsilon-drone runs the service checks.</p>
+</div>
+<div class="sect3">
+<h4 id="_configuration"><a class="anchor" href="#_configuration"></a><a class="link" href="#_configuration">Configuration</a></h4>
+<div class="sect4">
+<h5 id="_autoconfiguration"><a class="anchor" href="#_autoconfiguration"></a><a class="link" href="#_autoconfiguration">Autoconfiguration</a></h5>
+<div class="paragraph">
+<p>upsilon-drone will look for the following environment variables on startup;</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Environment Variable</th>
+<th class="tableblock halign-left valign-top">Example</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>UPSILON_IDENTIFIER</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">test.example.com</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The unique identifier for the node</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>UPSILON_CONFIG_SYSTEM_AMQPHOST</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">amqp.example.com</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The address of the AMQP Server</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_config_xml"><a class="anchor" href="#_config_xml"></a><a class="link" href="#_config_xml">config.xml</a></h5>
+<div class="paragraph">
+<p>upsilon-drone can be manually configured by a simple config.xml file, usually installed at
+<code>/etc/upsilon-drone/config.xml</code> on most platforms. This is necessary if you
+don&#8217;t want to use central configuration management for some reason.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_web"><a class="anchor" href="#_web"></a><a class="link" href="#_web">Web</a></h3>
+<div class="paragraph">
+<p>The web interface.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_reactor"><a class="anchor" href="#_reactor"></a><a class="link" href="#_reactor">Reactor</a></h3>
+<div class="paragraph">
+<p>The reactor "reacts" to things in upsilon. It should provide alerting one day.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_custodian"><a class="anchor" href="#_custodian"></a><a class="link" href="#_custodian">Custodian</a></h3>
+<div class="paragraph">
+<p>TODO.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_installation"><a class="anchor" href="#_installation"></a><a class="link" href="#_installation">Installation</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section could be called <strong>installation options</strong>, as it presents a couple of different options to install Upsilon. However, it&#8217;s probably a bit more correct to think of these as "deployment environments" so that is the terminology used by this documentation.</p>
+</div>
+<div class="sect2">
+<h3 id="_deployment_environments"><a class="anchor" href="#_deployment_environments"></a><a class="link" href="#_deployment_environments">Deployment Environments</a></h3>
+<div class="paragraph">
+<p>Here are a set of common deployment environments. It&#8217;s important to know that you <strong>can change</strong>, scale and upgrade Upsilon later on as well - the architecture is such that if you start off in a single virtual machine but later decide to go "full on with containers" (!) you can do that without too much hassle. See <a href="#upgrading">the upgrading section</a> for more information.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#allinone">Upsilon all-in-one on a CentOS Virtual Machine</a> (~20 minutes)</p>
+</li>
+<li>
+<p><a href="#onopenshift">Upsilon on OpenShift</a> (~5 minutes)</p>
+</li>
+<li>
+<p>Upsilon in docker Containers (~10 minutes)</p>
+</li>
+<li>
+<p><a href="#upsilon-ansible">Upsilon with Ansible</a> (advanced installation)</p>
+</li>
+<li>
+<p><a href="#yourway">Upsilon your way&#8230;&#8203;</a> (advanced installation)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="allinone"><a class="anchor" href="#allinone"></a><a class="link" href="#allinone">"All in one" CentOS Virtual Machine</a></h3>
+<div class="paragraph">
+<p>Upsilon can quite happily exist all in a single virtual machine for most
+deployments. You can scale out and change fairly easily after that too,
+but this sort of configuration is normally best for playing around,
+testing, kicking the tyres and similar.</p>
+</div>
+<div class="paragraph">
+<p>This article assumes you know how to install CentOS 7 in a virtual
+machine on your favourite hypervisor, or cloud. Upsilon doesn&#8217;t really
+care where it runs.</p>
+</div>
+<div class="sect3">
+<h4 id="virtual-machine-requirements"><a class="anchor" href="#virtual-machine-requirements"></a><a class="link" href="#virtual-machine-requirements">Virtual Machine requirements</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Hypervisor:</strong> any hypervisor/virtualisation that runs CentOS 7 Linux.</p>
+</li>
+<li>
+<p><strong>RAM:</strong> 4 Gb<br></p>
+</li>
+<li>
+<p><strong>CPU:</strong> 2x virtual CPUs</p>
+</li>
+<li>
+<p><strong>NIC:</strong> 1x public network interface</p>
+</li>
+<li>
+<p><strong>OS:</strong> CentOS 7, <a href="http://centos.org" class="bare">http://centos.org</a></p>
+</li>
+<li>
+<p><strong>Firewall:</strong> <em>see below&#8230;&#8203;</em></p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 54%;">
+<col style="width: 23%;">
+<col style="width: 23%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Protocol &amp; Port</th>
+<th class="tableblock halign-left valign-top">Source</th>
+<th class="tableblock halign-left valign-top">Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TCP Port 22</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inbound</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SSH inbound traffic - to connect to the VM for
+administration</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TCP Port 80</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inbound</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP inbound traffic - to access the web
+interface (upsilon-web)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TCP Port 4000</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inbound</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">upsilon-drone inbound traffic - REST API port</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TCP (Various port)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">outbound</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">What do you want upsilon to connect to?</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="install-packages-and-enable-dependant-services"><a class="anchor" href="#install-packages-and-enable-dependant-services"></a><a class="link" href="#install-packages-and-enable-dependant-services">Install packages and enable dependant services</a></h4>
+<div class="paragraph">
+<p>Become root on your virtual machine, lets begin :)</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>root@host:</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Add the upsilon yum repository, and the EPEL repository for CentOS
+(Extra Packages for Enterprise Linux);</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>root@host: cd /etc/yum.repos.d/
+root@host: curl -O http://repos.upsilonproject.io/upsilon-rpm-el7/upsilon-rpm-el7.repo
+root@host: rpm -U https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For RHEL, you need to enable the following repositories;</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>root@host: subscription-manager --enable 'rhel-7-server-rpms'
+root@host: subscription-manager --enable 'rhel-7-server-extras-rpms'
+root@host: subscription-manager --enable 'rhel-7-server-optional-rpms'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Lets install everything! Dependencies will be installed automatically.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>root@host: yum install centos-release-scl
+root@host: yum install upsilon-drone upsilon-web upsilon-database-sql rabbitmq-server mariadb-server httpd mariadb-server php php-pdo php-mysql</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Lets start the webserver (httpd), the database server (mariadb), the
+message server (rabbitmq) and make sure they restart on reboot (using
+<code>enable</code>);</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>root@host: systemctl enable httpd mariadb rabbitmq-server
+root@host: systemctl start httpd mariadb rabbitmq-server</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Should be no problems so far. Lets open up the port for the web
+interface if it&#8217;s not already open;</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>root@host: firewall-cmd --add-service http --permanent</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_create_a_upsilon_dns_record"><a class="anchor" href="#_create_a_upsilon_dns_record"></a><a class="link" href="#_create_a_upsilon_dns_record">Create a "upsilon" DNS record</a></h4>
+<div class="paragraph">
+<p>Many of the upsilon services rely on a DNS record called "upsilon" to find the messaging server, and perform auto-configuration.</p>
+</div>
+<div class="paragraph">
+<p>Because this a all in one virtual machine, we can simply edit the hosts file. Open <code>/etc/hosts</code> and add "upsilon" as a name for localhost;</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4 upsilon
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6 upsilon</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You should be able to <code>ping upsilon</code> if you have done this correctly.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[root@upsilon-allinone upsilon-drone]# ping upsilon
+PING localhost (127.0.0.1) 56(84) bytes of data.
+64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.023 ms
+64 bytes from localhost (127.0.0.1): icmp_seq=2 ttl=64 time=0.048 ms
+...</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_get_the_web_interface_installed"><a class="anchor" href="#_get_the_web_interface_installed"></a><a class="link" href="#_get_the_web_interface_installed">Get the web interface installed</a></h4>
+<div class="paragraph">
+<p>Now try and visit the web interface;</p>
+</div>
+<div class="paragraph">
+<p><a href="http://yourVmIPAddress/upsilon-web/" class="bare">http://yourVmIPAddress/upsilon-web/</a></p>
+</div>
+<div class="paragraph">
+<p>There isn&#8217;t anything that exciting in the web interface by default, so lets
+setup a drone so we can start monitoring stuff.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_start_using_the_web_interface"><a class="anchor" href="#_start_using_the_web_interface"></a><a class="link" href="#_start_using_the_web_interface">Start using the web interface</a></h4>
+<div class="paragraph">
+<p>In the web interface, go to Nodes &gt;&gt; List, you should see the custodian and
+drone show up. If so, you&#8217;re ready to get going!</p>
+</div>
+<div class="paragraph">
+<p>Go to <a id="setting-up-a-service-check"></a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="onopenshift"><a class="anchor" href="#onopenshift"></a><a class="link" href="#onopenshift">Upsilon on OpenShift</a></h3>
+<div class="paragraph">
+<p>Upsilon can be deployed quite easily on top of OpenShift 3 - all it&#8217;s
+services dockerized/containerized. You can scale-out of the OpenShift
+environment and deploy upsilon-drone and other services outside too.</p>
+</div>
+<div class="paragraph">
+<p>This article assumes you have a OpenShift 3 environment up and running,
+and have a fairly reasonable quota.</p>
+</div>
+<div class="sect3">
+<h4 id="create-a-openshift-project-for-upsilon"><a class="anchor" href="#create-a-openshift-project-for-upsilon"></a><a class="link" href="#create-a-openshift-project-for-upsilon">Create a OpenShift project for Upsilon</a></h4>
+<div class="paragraph">
+<p>Call it anything you like!</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/screenshots/upsilon-on-openshift-create-project.png" alt="create project"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="upload-the-upsilon-application-template-to-openshift"><a class="anchor" href="#upload-the-upsilon-application-template-to-openshift"></a><a class="link" href="#upload-the-upsilon-application-template-to-openshift">Upload the Upsilon application template to OpenShift</a></h4>
+<div class="paragraph">
+<p>There is a pre-built Upsilon application template for OpenShift, stored
+in a GitHub repository called
+<a href="https://github.com/upsilonproject/upsilon-on-openshift">upsilon-on-openshift</a>.</p>
+</div>
+<div class="paragraph">
+<p>On your local workstation, clone this repository:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>user@host: mkdir upsilon-sandbox &amp;&amp; cd upsilon-sandbox
+user@host: git clone https://github.com/upsilonproject/upsilon-on-openshift.git
+user@host: cd upsilon-on-openshift</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Login to OpenShift using the command line tool and upload the
+application template.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>user@host: oc new-project upsilon-on-openshift
+user@host: oc status
+In project Upsilon on OpenShift (upsilon-on-openshift) on server https://openshift.example.com:8443
+
+You have no services, deployment configs, or build configs.
+Run 'oc new-app' to create an application.
+
+user@host: oc create -f upsilon-on-openshift.yaml</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The application template should complete successfully, and you should be
+able to browse and find Upsilon in the OpenShift catalog;</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/screenshots/upsilon-on-openshift-add-to-project.png" alt="add to project"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/screenshots/upsilon-on-openshift-deploy-from-catalog.png" alt="deploy from catalog"></span></p>
+</div>
+<div class="paragraph">
+<p>You can change some of the deployment options before starting the
+deployment, but the defaults are fine.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/screenshots/upsilon-on-openshift-deploymentStarting.png" alt="deployment starting"></span></p>
+</div>
+<div class="paragraph">
+<p>When the pods deploy successfully, continue to the <a href="#_setup">Setup</a> section of this manual.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ondocker"><a class="anchor" href="#ondocker"></a><a class="link" href="#ondocker">Upsilon on Docker</a></h3>
+<div class="sect3">
+<h4 id="_drone_on_docker"><a class="anchor" href="#_drone_on_docker"></a><a class="link" href="#_drone_on_docker">Drone on Docker</a></h4>
+<div class="literalblock">
+<div class="content">
+<pre>docker create --name upsilon-drone -p 4000:4000 upsilonproject/drone -EUPSILON_IDENTIFIER=myDroneName</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="upsilon-ansible"><a class="anchor" href="#upsilon-ansible"></a><a class="link" href="#upsilon-ansible">Upsilon with Ansible</a></h3>
+<div class="paragraph">
+<p><strong>Note:</strong> These ansible scripts are in very <strong>early development</strong>, they
+help, but don&#8217;t install a full environment. Only useful if you know
+Upsilon pretty well right now. If you just want to play around with
+Upsilon for testing, <strong>don&#8217;t use this method</strong>.</p>
+</div>
+<div class="paragraph">
+<p>The GitHub repository is stored and maintained here with documentation;</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/upsilonproject/upsilon-ansible">upsilon-ansible</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="yourway"><a class="anchor" href="#yourway"></a><a class="link" href="#yourway">Upsilon your way&#8230;&#8203;</a></h3>
+<div class="paragraph">
+<p>Upsilon was designed to not be too presecriptive to the architectire it
+runs on, as everyone has different environments and different
+requirements.</p>
+</div>
+<div class="paragraph">
+<p>Here are the high level requirements for running Upsilon</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>DNS record "upsilon" that points to the AMQP server.</p>
+</li>
+<li>
+<p>Linux environment is largely expected, although parts of Upsilon might
+run on windows or MacOS, this isn&#8217;t tested really at all at the moment.
+CentOS is used by the project developers, hence CentOS packages are
+available. Debian based or other distributions are likely to work fine
+though.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Here are some other deployment configurations that are known to work;</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Using 1 uspilon serivce to 1 docker container, then deploying on
+OpenShift, or docker on it&#8217;s own.</p>
+</li>
+<li>
+<p>Deploying every service inside a virtual machine.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_setup"><a class="anchor" href="#_setup"></a><a class="link" href="#_setup">Setup</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section is about how to setup Upsilon once it is installed.</p>
+</div>
+<div style="page-break-after: always;"></div>
+<div class="sect2">
+<h3 id="_database"><a class="anchor" href="#_database"></a><a class="link" href="#_database">Database</a></h3>
+<div class="paragraph">
+<p>When MySQL is installed, it will not be setup automatically with the upsilon database. We need to set that up manually using a couple of scripts.</p>
+</div>
+<div class="sect3">
+<h4 id="_if_you_are_running_on_a_linux_machine_without_containers"><a class="anchor" href="#_if_you_are_running_on_a_linux_machine_without_containers"></a><a class="link" href="#_if_you_are_running_on_a_linux_machine_without_containers">If you are running on a Linux machine (without containers);</a></h4>
+<div class="paragraph">
+<p>Make sure the <code>upsilon-database-sql</code> package is installed.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>user@host: yum install upsilon-database-sql</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Go into the database setup directory that is created for you;</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>root@host: cd /usr/share/upsilon-database-sql/mysql/</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There is a "create-database" script in this directory, but that requires a few settings that we have not setup. Instead lets just run the following commands to import the database;</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>root@host: mysql -u root -e 'CREATE DATABASE upsilon'
+root@host: mysql -u root upsilon &lt; sql/schema.sql
+root@host: mysql -u root upsilon &lt; sql/initialData.sql</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_if_you_are_running_inside_a_linux_container_like_openshift"><a class="anchor" href="#_if_you_are_running_inside_a_linux_container_like_openshift"></a><a class="link" href="#_if_you_are_running_inside_a_linux_container_like_openshift">If you are running inside a Linux container (like OpenShift);</a></h4>
+<div class="paragraph">
+<p>The upsilon-web container image contains the database installer. You just need to launch a shell inside this container to run the initial database setup.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_create_the_database"><a class="anchor" href="#_create_the_database"></a><a class="link" href="#_create_the_database">Create the database</a></h4>
+<div class="paragraph">
+<p>Create the initial database using the <code>create-database</code> script.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>user@host: cd /usr/share/upsilon-database-sql/mysql/
+user@host: ./create-database</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_web_2"><a class="anchor" href="#_web_2"></a><a class="link" href="#_web_2">Web</a></h3>
+<div class="sect3">
+<h4 id="_launching_the_installer"><a class="anchor" href="#_launching_the_installer"></a><a class="link" href="#_launching_the_installer">Launching the installer</a></h4>
+<div class="paragraph">
+<p>upsilon-web will automatically launch the web installer if it cannot find a
+config.php file. This happens when upsilon-web is initially installed (or it&#8217;s
+config file has been deleted).</p>
+</div>
+<div class="paragraph">
+<p>This is what the upsilon-web installer looks like;</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/screenshots/web-installer-firststart.png" alt="web installer firststart">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_system_tests"><a class="anchor" href="#_system_tests"></a><a class="link" href="#_system_tests">System tests</a></h4>
+<div class="paragraph">
+<p>Various common tests will run to check that upsilon-web can be installed
+correctly. Everything should be green with a <code>PASS</code> in order to continue.</p>
+</div>
+<div class="paragraph">
+<p>Most of these issues require additional packages to be installed, for example
+the <code>pdoAvailable</code> check can be fixed by doing <code>yum install php-pdo</code> on some
+systems.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_generate_config_php"><a class="anchor" href="#_generate_config_php"></a><a class="link" href="#_generate_config_php">Generate config.php</a></h4>
+<div class="sect4">
+<h5 id="_database_2"><a class="anchor" href="#_database_2"></a><a class="link" href="#_database_2">Database</a></h5>
+<div class="paragraph">
+<p>When all the system tests have passed, you need to then configure the database
+connection.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Field</th>
+<th class="tableblock halign-left valign-top">Example</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DSN</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mysql:host=myserver;dbname=upsilon</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">See <a href="http://php.net/manual/en/pdo.construct.php" class="bare">http://php.net/manual/en/pdo.construct.php</a> for more information.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Database user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>admin</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The username of the user that the web interface will use to connect to the database.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Database pass</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>toomanysecrets</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The password for your database username.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+In some environments like OpenShift the username and password can be automatically completed for you as shown below. In other cases, you must specify the username and password of an existing MySQL user, or use the root user.
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/screenshots/web-installer-database.png" alt="web installer database">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Common Issues</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>asdf</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_first_administrator"><a class="anchor" href="#_first_administrator"></a><a class="link" href="#_first_administrator">First administrator</a></h5>
+<div class="paragraph">
+<p>The default first admin is <code>admin</code>, but you can change that here and set a
+password that you like as well. Additional administrators can be configured
+later too.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/screenshots/web-installer-admin.png" alt="web installer admin">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_drone_2"><a class="anchor" href="#_drone_2"></a><a class="link" href="#_drone_2">Drone</a></h3>
+<div class="paragraph">
+<p>upsilon-drone is the workhorse of Upsilon, and you need at least one drone to get anything done.</p>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s how the architecture works;</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/diagrams/drone-custodian-web-architecture.png" alt="Architecture"></span></p>
+</div>
+<div class="paragraph">
+<p>The upsilon-drone service ships with a "sample" configuration file that is ready to use in this simple deployment;</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>root@host: cd /etc/upsilon-drone/
+root@host: cp config.xml.sample config.xml</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We should now start the drone, which should pick up the configuration file</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>root@host: service upsilon-drone restart</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Lets try and ping it;</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>root@host: upsilon-ping
+Waiting 3 seconds for responses to pings.
++--------------------------------------+--------------------+------------+
+|              Identifier              |      Version       |    Type    |
++--------------------------------------+--------------------+------------+
+| 5b4e1ec4-ab8d-4f03-88b3-0746f6e5922e | 2.2.0-0-1514431787 | amqp, rest |
++--------------------------------------+--------------------+------------+</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Looks good. However, we need a custodian to write results to a database now&#8230;&#8203;</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_custodian_2"><a class="anchor" href="#_custodian_2"></a><a class="link" href="#_custodian_2">Custodian</a></h3>
+<div class="literalblock">
+<div class="content">
+<pre>user@root: yum install upsilon-custodian -y</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>upsilon-custodian should work without any additional configuration, so lets
+start it.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>user@root: service upsilon-custodian restart</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Lets do another ping to check it came up;</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>root@host: upsilon-ping
+Waiting 3 seconds for responses to pings.
++--------------------------------------+--------------------+------------+
+|              Identifier              |      Version       |    Type    |
++--------------------------------------+--------------------+------------+
+|          upsilon-custodian           |    development     |  db, amqp  |
+| 5b4e1ec4-ab8d-4f03-88b3-0746f6e5922e | 2.2.0-0-1514431787 | amqp, rest |
++--------------------------------------+--------------------+------------+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_usage"><a class="anchor" href="#_usage"></a><a class="link" href="#_usage">Usage</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_setting_up_a_service_check"><a class="anchor" href="#_setting_up_a_service_check"></a><a class="link" href="#_setting_up_a_service_check">Setting up a service check</a></h3>
+
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_integration"><a class="anchor" href="#_integration"></a><a class="link" href="#_integration">Integration</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_grafana"><a class="anchor" href="#_grafana"></a><a class="link" href="#_grafana">Grafana</a></h3>
+<div class="paragraph">
+<p>Grafana can quite happily read from the Upsilon MySQL database and show lots of
+information. The easiest way to probably do this is create a couple of SQL
+Views that make building Grafana queries a little easier.</p>
+</div>
+<div class="sect3">
+<h4 id="_services_dashboard"><a class="anchor" href="#_services_dashboard"></a><a class="link" href="#_services_dashboard">Services Dashboard</a></h4>
+<div class="paragraph">
+<p><span class="image"><img src="images/screenshots/grafana-services-overview.png" alt="Services Overview"></span></p>
+</div>
+<div class="sect4">
+<h5 id="_sql_view"><a class="anchor" href="#_sql_view"></a><a class="link" href="#_sql_view">SQL View</a></h5>
+<div class="literalblock">
+<div class="content">
+<pre>create view `grafana_services` as select id, identifier, lastUpdated, node, case karma when 'GOOD' THEN 3 WHEN 'BAD' THEN 0 WHEN 'UNKNOWN' THEN 1 WHEN 'OLD' THEN 2 ELSE '?' END karma, karma AS karmaDescription FROM services;</pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_grafana_data_source_query_mysql"><a class="anchor" href="#_grafana_data_source_query_mysql"></a><a class="link" href="#_grafana_data_source_query_mysql">Grafana Data Source Query (MySQL)</a></h5>
+<div class="paragraph">
+<p><span class="image"><img src="images/screenshots/grafana-services-overview-data-source.png" alt="Data source"></span></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_grafana_table_view"><a class="anchor" href="#_grafana_table_view"></a><a class="link" href="#_grafana_table_view">Grafana Table view</a></h5>
+<div class="paragraph">
+<p>Use normal settings for table column headers.</p>
+</div>
+<div class="paragraph">
+<p>Here is how you setup the karma column highlighting.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/screenshots/grafana-table-karma-column.png" alt="Table karma Column"></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_authentication"><a class="anchor" href="#_authentication"></a><a class="link" href="#_authentication">Authentication</a></h3>
+<div class="paragraph">
+<p>Really sorry, but Upsilon does not really have any integration into authentication providers at the moment :(</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_common_issues"><a class="anchor" href="#_common_issues"></a><a class="link" href="#_common_issues">Common Issues</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_database_issues"><a class="anchor" href="#_database_issues"></a><a class="link" href="#_database_issues">Database Issues</a></h3>
+<div class="sect3">
+<h4 id="_web_database_install_settings_table_does_not_exist"><a class="anchor" href="#_web_database_install_settings_table_does_not_exist"></a><a class="link" href="#_web_database_install_settings_table_does_not_exist">web database install, Settings table does not exist</a></h4>
+<div class="imageblock">
+<div class="content">
+<img src="images/screenshots/web-install-nosettingstable.png" alt="web install nosettingstable">
+</div>
+</div>
+<div class="paragraph">
+<p>You need to <a href="#_database">setup the database</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_upgrading"><a class="anchor" href="#_upgrading"></a><a class="link" href="#_upgrading">Upgrading</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Upsilon is designed to be N-1 compatible for updates, with automatic upgrades of database schema and similar whenever possible.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_appendix"><a class="anchor" href="#_appendix"></a><a class="link" href="#_appendix">Appendix</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Please check out the website for further links, and to contact the community.</p>
+</div>
+<div class="paragraph">
+<p><a href="http://upsilonproject.io" class="bare">http://upsilonproject.io</a></p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-10-02 23:10:21 UTC
+</div>
+</div>
+</body>
+</html>

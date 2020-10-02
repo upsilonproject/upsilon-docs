@@ -1,5 +1,0 @@
-Quickstarts
-===========
-
-include::quickstart-drone.adoc[]
-include::quickstart-drone-docker.adoc[]

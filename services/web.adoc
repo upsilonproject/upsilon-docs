@@ -1,6 +1,0 @@
-Web
-~~~
-
-The web interface. 
-
-

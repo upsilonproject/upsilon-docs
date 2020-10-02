@@ -1,3 +1,0 @@
-There are several quickstarts available for upsilon-drone.
-
-link:quickstart-drone-docker.md[Upsilon Drone on Docker]

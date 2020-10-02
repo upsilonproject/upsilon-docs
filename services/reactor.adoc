@@ -1,6 +1,0 @@
-Reactor
-~~~~~~~
-
-The reactor "reacts" to things in upsilon. It should provide alerting one day.
-
-
