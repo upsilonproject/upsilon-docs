@@ -1,0 +1,63 @@
+This is a test
+==============
+James <james@example.com>
+
+:toc:
+
+Hope you like this.
+
+
+Code
+---
+
+Oh joy. Another **thing**. 
+
+hi there. check out my `really **cool** `.
+
+[source,java]
+----
+public static void main(String args[]) {
+	System.out.println("Why did I choose Java?!");
+}
+----
+
+Upsilon likes shell prompts in it's docs.
+
+:promptTxt: pass:q[user@host:]
+:promptCmd: pass:q[user@host:]
+:promptRoot: pass:q[root@host:]
+
+{promptCmd} sudo su
+{promptRoot} ls
+
+[source]
+----
+{promptTxt} ls // <1>
+{promptCmd} upsilon ping # <2>
+
+these are some results ;; <3>
+
+**user@host:** foo
+----
+<1> See what *files* are available
+<2> Ping some nodes.
+<3> I don't even know what this is
+
+Paragraphs
+----------
+
+NOTE: FYI.
+
+WARNING: This is a node.
+
+IMPORTANT: ACtually. This isn't important.
+
+CAUTION: Do not run `rm -rf`
+
+I really hope you enjoy that. hehe. blah blah.
+
+TIP: This a pro tip. This is a day.
+
+And that's all for now folks.
+
+

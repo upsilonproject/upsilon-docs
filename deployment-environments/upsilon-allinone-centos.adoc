@@ -1,0 +1,137 @@
+[[allinone]]
+"All in one" CentOS Virtual Machine
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Upsilon can quite happily exist all in a single virtual machine for most
+deployments. You can scale out and change fairly easily after that too,
+but this sort of configuration is normally best for playing around,
+testing, kicking the tyres and similar.
+
+This article assumes you know how to install CentOS 7 in a virtual
+machine on your favourite hypervisor, or cloud. Upsilon doesn't really
+care where it runs.
+
+[[virtual-machine-requirements]]
+Virtual Machine requirements
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* *Hypervisor:* any hypervisor/virtualisation that runs CentOS 7 Linux.
+* *RAM:* 4 Gb +
+* *CPU:* 2x virtual CPUs
+* *NIC:* 1x public network interface
+* *OS:* CentOS 7, http://centos.org
+* *Firewall:* _see below..._
+
+[cols="54%,23%,23%",options="header"]
+|=======================================================================
+|Protocol & Port |Source |Reason
+|TCP Port 22 |inbound |SSH inbound traffic - to connect to the VM for
+administration
+
+|TCP Port 80 |inbound |HTTP inbound traffic - to access the web
+interface (upsilon-web)
+
+|TCP Port 4000 |inbound |upsilon-drone inbound traffic - REST API port
+
+|TCP (Various port) |outbound |What do you want upsilon to connect to?
+|=======================================================================
+
+[[install-packages-and-enable-dependant-services]]
+Install packages and enable dependant services
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Become root on your virtual machine, lets begin :)
+
+....
+root@host:
+....
+
+Add the upsilon yum repository, and the EPEL repository for CentOS
+(Extra Packages for Enterprise Linux);
+
+....
+
+root@host: cd /etc/yum.repos.d/ 
+root@host: curl -O http://repos.upsilonproject.io/upsilon-rpm-el7/upsilon-rpm-el7.repo
+root@host: rpm -U https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+
+....
+
+For RHEL, you need to enable the following repositories;
+
+....
+root@host: subscription-manager --enable 'rhel-7-server-rpms'
+root@host: subscription-manager --enable 'rhel-7-server-extras-rpms'
+root@host: subscription-manager --enable 'rhel-7-server-optional-rpms'
+....
+
+Lets install everything! Dependencies will be installed automatically.
+
+....
+
+root@host: yum install centos-release-scl
+root@host: yum install upsilon-drone upsilon-web upsilon-database-sql rabbitmq-server mariadb-server httpd mariadb-server php php-pdo php-mysql
+
+....
+
+Lets start the webserver (httpd), the database server (mariadb), the
+message server (rabbitmq) and make sure they restart on reboot (using
+`enable`);
+
+....
+
+root@host: systemctl enable httpd mariadb rabbitmq-server
+root@host: systemctl start httpd mariadb rabbitmq-server
+
+....
+
+Should be no problems so far. Lets open up the port for the web
+interface if it's not already open;
+
+....
+
+root@host: firewall-cmd --add-service http --permanent
+
+....
+
+Create a "upsilon" DNS record
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Many of the upsilon services rely on a DNS record called "upsilon" to find the messaging server, and perform auto-configuration.
+
+Because this a all in one virtual machine, we can simply edit the hosts file. Open `/etc/hosts` and add "upsilon" as a name for localhost;
+
+....
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4 upsilon
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6 upsilon
+....
+
+You should be able to `ping upsilon` if you have done this correctly.
+
+....
+[root@upsilon-allinone upsilon-drone]# ping upsilon
+PING localhost (127.0.0.1) 56(84) bytes of data.
+64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.023 ms
+64 bytes from localhost (127.0.0.1): icmp_seq=2 ttl=64 time=0.048 ms
+...
+....
+
+Get the web interface installed
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Now try and visit the web interface; 
+
+http://yourVmIPAddress/upsilon-web/ 
+
+There isn't anything that exciting in the web interface by default, so lets
+setup a drone so we can start monitoring stuff.
+
+Start using the web interface
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In the web interface, go to Nodes >> List, you should see the custodian and
+drone show up. If so, you're ready to get going!
+
+Go to [[setting-up-a-service-check]].
+
+

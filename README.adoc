@@ -1,0 +1,51 @@
+Upsilon Docs
+============
+:docinfo: shared
+:title: Upsilon Project Documentation
+:toc: left
+:toclevels: 2
+:sectanchors:
+:sectlinks:
+:favicon: logo96pxdarkbg.webp
+
+toc::[] 
+
+Introduction
+------------
+image:https://travis-ci.org/upsilonproject/upsilon-docs.svg?branch=master["Build Status", link="https://travis-ci.org/upsilonproject/upsilon-docs"]
+
+These are the Upsilon docs. They are available at
+http://docs.upsilonproject.io[docs.upsilonproject.io] and the
+https://github.com/upsilonproject/upsilon-docs[upsilon-docs project on GitHub].
+You can also http://docs.upsilonproject.io/upsilon-docs.pdf[download a PDF] if that's what you're into.
+
+To learn more about the Upsilon project, please visit http://www.upsilonproject.io. 
+
+Help improve this documentation!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+This documentation is written in a very simple human-readable language called
+link:http://www.methods.co.nz/asciidoc/[AsciiDoc]. This means basically anyone
+can make changes and improvements by just visiting the GitHub repository for
+the documentation raise a GitHub pull request against your own feature branch.
+
+If you don't know how to do that, please just
+link:https://github.com/upsilonproject/upsilon-docs/issues/new[**tell us how to improve
+documentation**] by raising an issue ticket against the docs and we'll take it
+from there!
+
+include::services/overview.adoc[Services & Introduction]
+
+include::deployment-environments/index.adoc[Installation & Deployment]
+
+include::setup/index.adoc[Setup]
+
+include::usage/index.adoc[Usage]
+
+include::integration/index.adoc[Integration]
+
+include::commonissues.adoc[Common Issues]
+
+include::upgrading.adoc[Upgrading]
+
+include::appendix.adoc[Appendix]
+
