@@ -1,0 +1,67 @@
+[[onopenshift]]
+Upsilon on OpenShift
+~~~~~~~~~~~~~~~~~~~~
+
+Upsilon can be deployed quite easily on top of OpenShift 3 - all it's
+services dockerized/containerized. You can scale-out of the OpenShift
+environment and deploy upsilon-drone and other services outside too.
+
+This article assumes you have a OpenShift 3 environment up and running,
+and have a fairly reasonable quota.
+
+[[create-a-openshift-project-for-upsilon]]
+Create a OpenShift project for Upsilon
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Call it anything you like!
+
+image:images/screenshots/upsilon-on-openshift-create-project.png[create
+project]
+
+[[upload-the-upsilon-application-template-to-openshift]]
+Upload the Upsilon application template to OpenShift
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+There is a pre-built Upsilon application template for OpenShift, stored
+in a GitHub repository called
+https://github.com/upsilonproject/upsilon-on-openshift[upsilon-on-openshift].
+
+On your local workstation, clone this repository:
+
+....
+
+user@host: mkdir upsilon-sandbox && cd upsilon-sandbox
+user@host: git clone https://github.com/upsilonproject/upsilon-on-openshift.git
+user@host: cd upsilon-on-openshift
+
+....
+
+Login to OpenShift using the command line tool and upload the
+application template.
+
+....
+user@host: oc new-project upsilon-on-openshift
+user@host: oc status
+In project Upsilon on OpenShift (upsilon-on-openshift) on server https://openshift.example.com:8443
+
+You have no services, deployment configs, or build configs.
+Run 'oc new-app' to create an application.
+
+user@host: oc create -f upsilon-on-openshift.yaml
+....
+
+
+The application template should complete successfully, and you should be
+able to browse and find Upsilon in the OpenShift catalog;
+
+image:images/screenshots/upsilon-on-openshift-add-to-project.png[add to project]
+
+image:images/screenshots/upsilon-on-openshift-deploy-from-catalog.png[deploy from catalog]
+
+You can change some of the deployment options before starting the
+deployment, but the defaults are fine.
+
+image:images/screenshots/upsilon-on-openshift-deploymentStarting.png[deployment starting]
+
+When the pods deploy successfully, continue to the link:#_setup[Setup] section of this manual.
+
