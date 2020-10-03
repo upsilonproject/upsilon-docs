@@ -1,6 +1,7 @@
 Upsilon Docs
 ============
 :docinfo: shared
+:data-uri:
 :title: Upsilon Project Documentation
 :toc: left
 :toclevels: 2
