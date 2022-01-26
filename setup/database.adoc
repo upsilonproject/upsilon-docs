@@ -1,8 +1,13 @@
-[setup-db]
-Database
+[#setup-db]
+Database 
 ~~~~~~~~
 
-When MySQL is installed, it will not be setup automatically with the upsilon database. We need to set that up manually using a couple of scripts.
+Upsilon uses the MySQL database. Put it in a container, install it natively, or
+however you like! There is lots of documentation on the web about how to setup
+a MySQL Database.
+
+Once it is installed, we need to set a `upsilon` database and import the
+schema, and initial data.
 
 If you are running on a Linux machine (without containers);
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -13,32 +18,40 @@ Make sure the `upsilon-database-sql` package is installed.
 user@host: yum install upsilon-database-sql
 ....
 
-Go into the database setup directory that is created for you;
+Go into the database setup directory, and setup some environment variables;
 
 ....
-root@host: cd /usr/share/upsilon-database-sql/mysql/
+root@host: cd /usr/share/upsilon-database-sql/
+root@host: export UP_DATABASE_USER=myuser
+root@host: export UP_DATABASE_PASS=mypassword
+root@host: export UP_DATABASE_HOST=localhost
 ....
 
-There is a "create-database" script in this directory, but that requires a few settings that we have not setup. Instead lets just run the following commands to import the database;
+NOTE: Currently the database name must be `upsilon`. 
 
 ....
-root@host: mysql -u root -e 'CREATE DATABASE upsilon'
-root@host: mysql -u root upsilon < sql/schema.sql
-root@host: mysql -u root upsilon < sql/initialData.sql
+root@host: mysql -u $UP_DATABASE_USER -p $UP_DATABASE_PASS -e 'CREATE DATABASE upsilon' -h $UP_DATABASE_HOST
 ....
 
-If you are running inside a Linux container (like OpenShift);
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Run the database migrations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The upsilon-web container image contains the database installer. You just need to launch a shell inside this container to run the initial database setup.
-
-Create the database
-^^^^^^^^^^^^^^^^^^^
-
-Create the initial database using the `create-database` script.
+The `updb` program can now populate the initial database.
 
 ....
-user@host: cd /usr/share/upsilon-database-sql/mysql/
-user@host: ./create-database
+user@host: ./updb
 ....
+
+You will get output something like this;
+
+....
+INFO[0000] conf: {Database:{User:myuser Pass:mypassword Host:localhost Name:upsilon} IsLoaded:true Force:0}
+INFO[0000] db: mysql://upsilon:upsilon@tcp(upsilon)/upsilon
+INFO[0000] Migrations directory: /home/xconspirisist/sandbox/upsilon-database-sql/mysql/migrations
+...etc...
+....
+
+The database should now be ready to use. Note that the `updb` tool is used
+during upgrades too.
+
 
