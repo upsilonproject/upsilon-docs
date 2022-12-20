@@ -13,9 +13,9 @@ jobs:
       uses: actions/checkout@v2
     - name: Get build container
       id: adocbuild
-      uses: avattathil/asciidoctor-action@master
+      uses: tonynv/asciidoctor-action@master
       with:
-          program: "asciidoctor -D docs -a stylesheet=style.css --backend=html5 -o index.html README.adoc && echo 'docs.upsilonproject.io' > docs/CNAME"
+          program: "gem install asciidoctor-multipage && asciidoctor -r asciidoctor-multipage -b multipage -D docs -a stylesheet=style.css -o index.html README.adoc && cp CNAME README.md docs/"
     - name: Deploy docs to ghpages
       uses: peaceiris/actions-gh-pages@v3
       with: 
