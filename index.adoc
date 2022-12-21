@@ -1,5 +1,4 @@
-Upsilon Docs
-============
+= Upsilon Docs
 :docinfo: shared
 :doctype: book
 :data-uri:
@@ -15,8 +14,7 @@ Upsilon Docs
 toc::[]
 
 [discrete]
-Introduction
-------------
+== Introduction
 image:https://travis-ci.org/upsilonproject/upsilon-docs.svg?branch=master["Build Status", link="https://travis-ci.org/upsilonproject/upsilon-docs"]
 
 These are the Upsilon docs. They are available at
@@ -26,8 +24,8 @@ You can also http://docs.upsilonproject.io/upsilon-docs.pdf[download a PDF] if t
 
 To learn more about the Upsilon project, please visit http://www.upsilonproject.io. 
 
-Help improve this documentation!
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[discrete]
+=== Help improve this documentation!
 This documentation is written in a very simple human-readable language called
 link:http://www.methods.co.nz/asciidoc/[AsciiDoc]. This means basically anyone
 can make changes and improvements by just visiting the GitHub repository for
@@ -38,7 +36,7 @@ link:https://github.com/upsilonproject/upsilon-docs/issues/new[**tell us how to 
 documentation**] by raising an issue ticket against the docs and we'll take it
 from there!
 
-include::services/overview.adoc[Services & Introduction]
+include::services/index.adoc[Services & Introduction]
 
 include::deployment-environments/index.adoc[Installation & Deployment]
 

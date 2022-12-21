@@ -1,4 +1,5 @@
-== Drone
+[[drone]]
+=== Drone
 
 upsilon-drone runs the service checks.
 

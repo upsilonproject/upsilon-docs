@@ -1,5 +1,5 @@
 default: graphviz-diagrams
-	asciidoctor -r asciidoctor-multipage -b multipage_html5 -a stylesheet=style.css README.adoc -D docs/
+	asciidoctor -r asciidoctor-multipage -b multipage_html5 -a stylesheet=style.css index.adoc -D docs/
 
 graphviz-diagrams:
 	mkdir -p images/diagrams/

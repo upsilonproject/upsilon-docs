@@ -1,0 +1,7 @@
+[[cli]]
+=== CLI
+
+Command line interface, for reporting and cluster admin. 
+
+https://github.com/upsilonproject/upsilon-cli
+

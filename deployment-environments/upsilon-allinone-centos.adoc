@@ -1,6 +1,5 @@
 [[allinone]]
-"All in one" CentOS Virtual Machine
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== "All in one" CentOS Virtual Machine
 
 Upsilon can quite happily exist all in a single virtual machine for most
 deployments. You can scale out and change fairly easily after that too,

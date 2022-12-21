@@ -17,6 +17,7 @@ a {
 
 a:focus {
 	background-color: maroon;
+  color: white;
 }
 
 #header {
@@ -26,6 +27,9 @@ a:focus {
 
 #footer {
   grid-area: footer;
+  align-self: end;
+  justify-self: center;
+  padding: .2em;
 }
 
 #toc {
@@ -65,14 +69,16 @@ h1 {
 
 #toc a:hover {
 	background-color: maroon;
+  color: white;
 }
 
 #content {
 	background-color: white;
 	grid-area: content;
+  width: 1000px;
 	max-width: 1000px;
-	padding: 1em;
-	margin: auto;
+  justify-self: center;
+  align-self: start;
 }
 
 #content img {
@@ -124,6 +130,10 @@ div.admonitionblock td:first-child {
 	background-color: #efefef;
 	margin-bottom: -1em;
 	padding: 1em;
+}
+
+.nav-footer {
+  display: none;
 }
 
 @media (max-width: 700px) {
