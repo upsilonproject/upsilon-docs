@@ -15,7 +15,7 @@ jobs:
       id: adocbuild
       uses: tonynv/asciidoctor-action@master
       with:
-          program: "gem install asciidoctor-multipage && asciidoctor -r asciidoctor-multipage -b multipage_html5 -D docs -a stylesheet=style.css -o index.html index.adoc && cp CNAME README.md docs/"
+          program: "gem install asciidoctor-multipage && asciidoctor -r asciidoctor-multipage -b multipage_html5 -D docs -a stylesheet=style.css -o index.html index.adoc && cp CNAME README.md logo96pxdarkbg.webp docs/"
     - name: Deploy docs to ghpages
       uses: peaceiris/actions-gh-pages@v3
       with: 
