@@ -13,22 +13,29 @@ body {
 	line-height: 1.5;
 	padding: 0;
 	margin: 0;
-}
-
-.article {
 	display: grid;
-	grid-template-areas: "nav content";
-	grid-template-columns: 20em 1fr;
-	grid-template-rows: auto;
+	grid-template-areas: "nav content" "nav footer";
+	grid-template-columns: 20em auto;
+	grid-template-rows: auto min-content;
+	height: 100vh;
+	align-items: stretch;
 }
 
 a {
 	text-decoration: none;
 }
 
+a:focus {
+	background-color: maroon;
+}
+
 #header {
 	background-color: #444;
 	grid-area: nav;
+}
+
+#footer {
+  grid-area: footer;
 }
 
 #toc {
@@ -80,6 +87,7 @@ h1 {
 
 #content img {
 	max-width: 100%;
+	vertical-align: middle;
 }
 
 pre {
@@ -103,6 +111,36 @@ th {
 	text-align: left;
 }
 
+.imageblock.right {
+	float: right;
+}
+
+hr {
+	clear: both;
+	border: 0;
+	border-bottom: 1px solid #efefef;
+	margin: 1em;
+}
+
+div.admonitionblock td {
+	border: 0;
+}
+
+div.admonitionblock td:first-child {
+	font-weight: bold;
+}
+
+.listingblock .title {
+	background-color: #efefef;
+	margin-bottom: -1em;
+	padding: 1em;
+}
+
+@media (max-width: 700px) {
+	body {
+		display: block;
+	}
+}
 
 </style>
 <style>.toc-current{font-weight: bold;} .toc-root{font-family: "Open Sans","DejaVu Sans",sans-serif;
@@ -253,7 +291,7 @@ don&#8217;t want to use central configuration management for some reason.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-12-20 23:54:32 UTC
+Last updated 2022-12-21 00:01:48 UTC
 </div>
 </div>
 </body>
