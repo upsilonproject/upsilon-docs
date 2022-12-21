@@ -1,6 +1,7 @@
 Upsilon Docs
 ============
 :docinfo: shared
+:doctype: book
 :data-uri:
 :title: Upsilon Project Documentation
 :toc: left
@@ -8,10 +9,12 @@ Upsilon Docs
 :sectanchors:
 :sectlinks:
 :sectnums:
+:multipage-level: 2
 :favicon: logo96pxdarkbg.webp
 
-toc::[] 
+toc::[]
 
+[discrete]
 Introduction
 ------------
 image:https://travis-ci.org/upsilonproject/upsilon-docs.svg?branch=master["Build Status", link="https://travis-ci.org/upsilonproject/upsilon-docs"]
