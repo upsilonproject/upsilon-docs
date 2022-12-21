@@ -27,6 +27,7 @@ a {
 
 a:focus {
 	background-color: maroon;
+  color: white;
 }
 
 #header {
@@ -36,6 +37,9 @@ a:focus {
 
 #footer {
   grid-area: footer;
+  align-self: end;
+  justify-self: center;
+  padding: .2em;
 }
 
 #toc {
@@ -75,14 +79,16 @@ h1 {
 
 #toc a:hover {
 	background-color: maroon;
+  color: white;
 }
 
 #content {
 	background-color: white;
 	grid-area: content;
+  width: 1000px;
 	max-width: 1000px;
-	padding: 1em;
-	margin: auto;
+  justify-self: center;
+  align-self: start;
 }
 
 #content img {
@@ -136,6 +142,10 @@ div.admonitionblock td:first-child {
 	padding: 1em;
 }
 
+.nav-footer {
+  display: none;
+}
+
 @media (max-width: 700px) {
 	body {
 		display: block;
@@ -148,46 +158,53 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="_configuration" class="book toc2 toc-left">
+<body id="drone" class="book toc2 toc-left">
 <div id="header">
 <h1>Upsilon Docs</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
-<p><span class="toc-root"><a href="README.html">Upsilon Project Documentation</a></span></p><ul class="sectlevel2">
-<li><a href="_help_improve_this_documentation.html">1. Help improve this documentation!</a>
-</li>
+<p><span class="toc-root"><a href="index.html">Upsilon Project Documentation</a></span></p><ul class="sectlevel1">
 <li><a href="_services_introduction.html">1. Services &amp; Introduction</a>
+<ul class="sectlevel2">
+<li><a href="_architecture_overview.html">1.1. Architecture Overview</a>
 </li>
-<li><a href="_drone.html">2. Drone</a>
-<ul class="sectlevel3">
-<li><a href="_drone.html#_configuration"><span class="toc-current">2.1. Configuration</span></a>
+<li><a href="cli.html">1.2. CLI</a>
+</li>
+<li><a href="drone.html"><span class="toc-current">1.3. Drone</span></a>
+</li>
+<li><a href="web.html">1.4. Web</a>
+</li>
+<li><a href="reactor.html">1.5. Reactor</a>
+</li>
+<li><a href="custodian.html">1.6. Custodian</a>
 </li>
 </ul>
 </li>
-<li><a href="_web.html">3. Web</a>
+<li><a href="_installation.html">2. Installation</a>
 </li>
-<li><a href="_custodian.html">4. Custodian</a>
+<li><a href="_setup.html">3. Setup</a>
 </li>
-<li><a href="_installation.html">5. Installation</a>
+<li><a href="_usage.html">4. Usage</a>
 </li>
-<li><a href="_setup.html">6. Setup</a>
+<li><a href="_integration.html">5. Integration</a>
 </li>
-<li><a href="_usage.html">7. Usage</a>
+<li><a href="_common_issues.html">6. Common Issues</a>
 </li>
-<li><a href="_integration.html">8. Integration</a>
+<li><a href="_upgrading.html">7. Upgrading</a>
 </li>
-<li><a href="_common_issues.html">9. Common Issues</a>
-</li>
-<li><a href="_upgrading.html">10. Upgrading</a>
-</li>
-<li><a href="_appendix.html">11. Appendix</a>
+<li><a href="_appendix.html">8. Appendix</a>
 </li>
 </ul>
 </div>
 </div>
 <div id="content">
+<div class="sect2">
+<h3 id="drone"><a class="anchor" href="#drone"></a><a class="link" href="#drone">1.3. Drone</a></h3>
+<div class="paragraph">
+<p>upsilon-drone runs the service checks.</p>
+</div>
 <div class="sect3">
-<h4 id="_configuration"><a class="anchor" href="#_configuration"></a><a class="link" href="#_configuration">2.1. Configuration</a></h4>
+<h4 id="_configuration"><a class="anchor" href="#_configuration"></a><a class="link" href="#_configuration">1.3.1. Configuration</a></h4>
 <div class="sect4">
 <h5 id="_autoconfiguration"><a class="anchor" href="#_autoconfiguration"></a><a class="link" href="#_autoconfiguration">Autoconfiguration</a></h5>
 <div class="paragraph">
@@ -229,13 +246,14 @@ don&#8217;t want to use central configuration management for some reason.</p>
 </div>
 </div>
 </div>
+</div>
 <div class="paragraph nav-footer">
-<p></p>
+<p>← Previous: <a href="cli.html">CLI</a> | ↑ Up: <a href="_services_introduction.html">Services &amp; Introduction</a> | ⌂ Home: <a href="index.html">Upsilon Project Documentation</a> | Next: <a href="web.html">Web</a> →</p>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-12-21 00:09:41 UTC
+Last updated 2022-12-21 00:55:02 UTC
 </div>
 </div>
 </body>
