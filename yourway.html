@@ -148,7 +148,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="_appendix" class="book toc2 toc-left">
+<body id="yourway" class="book toc2 toc-left">
 <div id="header">
 <h1>Upsilon Docs</h1>
 <div id="toc" class="toc2">
@@ -159,6 +159,20 @@ div.admonitionblock td:first-child {
 <li><a href="_services_introduction.html">1. Services &amp; Introduction</a>
 </li>
 <li><a href="_installation.html">2. Installation</a>
+<ul class="sectlevel2">
+<li><a href="_deployment_environments.html">2.1. Deployment Environments</a>
+</li>
+<li><a href="allinone.html">2.2. "All in one" CentOS Virtual Machine</a>
+</li>
+<li><a href="onopenshift.html">2.3. Upsilon on OpenShift</a>
+</li>
+<li><a href="ondocker.html">2.4. Upsilon on Docker</a>
+</li>
+<li><a href="upsilon-ansible.html">2.5. Upsilon with Ansible</a>
+</li>
+<li><a href="yourway.html"><span class="toc-current">2.6. Upsilon your way&#8230;&#8203;</span></a>
+</li>
+</ul>
 </li>
 <li><a href="_setup.html">3. Setup</a>
 </li>
@@ -170,29 +184,53 @@ div.admonitionblock td:first-child {
 </li>
 <li><a href="_upgrading.html">7. Upgrading</a>
 </li>
-<li><a href="_appendix.html"><span class="toc-current">8. Appendix</span></a>
+<li><a href="_appendix.html">8. Appendix</a>
 </li>
 </ul>
 </div>
 </div>
 <div id="content">
-<div class="sect1">
-<h2 id="_appendix"><a class="anchor" href="#_appendix"></a><a class="link" href="#_appendix">8. Appendix</a></h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="yourway"><a class="anchor" href="#yourway"></a><a class="link" href="#yourway">2.6. Upsilon your way&#8230;&#8203;</a></h3>
 <div class="paragraph">
-<p>Please check out the website for further links, and to contact the community.</p>
+<p>Upsilon was designed to not be too presecriptive to the architectire it
+runs on, as everyone has different environments and different
+requirements.</p>
 </div>
 <div class="paragraph">
-<p><a href="http://upsilonproject.io" class="bare">http://upsilonproject.io</a></p>
+<p>Here are the high level requirements for running Upsilon</p>
 </div>
 <div class="ulist">
 <ul>
+<li>
+<p>DNS record "upsilon" that points to the AMQP server.</p>
+</li>
+<li>
+<p>Linux environment is largely expected, although parts of Upsilon might
+run on windows or MacOS, this isn&#8217;t tested really at all at the moment.
+CentOS is used by the project developers, hence CentOS packages are
+available. Debian based or other distributions are likely to work fine
+though.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Here are some other deployment configurations that are known to work;</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Using 1 uspilon serivce to 1 docker container, then deploying on
+OpenShift, or docker on it&#8217;s own.</p>
+</li>
+<li>
+<p>Deploying every service inside a virtual machine.</p>
+</li>
 </ul>
 </div>
 </div>
-</div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="_upgrading.html">Upgrading</a> | ↑ Up: <a href="README.html">Upsilon Project Documentation</a></p>
+<p>← Previous: <a href="upsilon-ansible.html">Upsilon with Ansible</a> | ↑ Up: <a href="_installation.html">Installation</a> | ⌂ Home: <a href="README.html">Upsilon Project Documentation</a> | Next: <a href="_setup.html">Setup</a> →</p>
 </div>
 </div>
 <div id="footer">

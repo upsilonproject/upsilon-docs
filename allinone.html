@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.18">
+<link rel="icon" type="image/webp" href="logo96pxdarkbg.webp">
+<title>Upsilon Project Documentation</title>
+<style>
+body {
+	font-family: sans-serif;
+	line-height: 1.5;
+	padding: 0;
+	margin: 0;
+	display: grid;
+	grid-template-areas: "nav content" "nav footer";
+	grid-template-columns: 20em auto;
+	grid-template-rows: auto min-content;
+	height: 100vh;
+	align-items: stretch;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:focus {
+	background-color: maroon;
+}
+
+#header {
+	background-color: #444;
+	grid-area: nav;
+}
+
+#footer {
+  grid-area: footer;
+}
+
+#toc {
+	padding: 1em;
+}
+
+#toc a {
+	color: white;
+}
+
+#toc li {
+	padding-bottom: .6em;
+}
+
+#toc ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#toc ul ul {
+	padding-left: 1.4em;
+}
+
+#toctitle {
+	font-weight: bold;
+	color: white;
+}
+
+h1 {
+	font-size: 1.4em;
+	background-color: black;
+	padding: .6em;
+	margin: 0;
+	color: white;
+}
+
+#toc a:hover {
+	background-color: maroon;
+}
+
+#content {
+	background-color: white;
+	grid-area: content;
+	max-width: 1000px;
+	padding: 1em;
+	margin: auto;
+}
+
+#content img {
+	max-width: 100%;
+	vertical-align: middle;
+}
+
+pre {
+	background-color: #f7f7f8;
+	padding: 1em;
+	word-wrap: break-word;
+	white-space: pre-wrap;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+td, th {
+	border: 1px solid gray;
+	padding: .4em;
+}
+
+th {
+	background-color: #f9f9f9;
+	text-align: left;
+}
+
+.imageblock.right {
+	float: right;
+}
+
+hr {
+	clear: both;
+	border: 0;
+	border-bottom: 1px solid #efefef;
+	margin: 1em;
+}
+
+div.admonitionblock td {
+	border: 0;
+}
+
+div.admonitionblock td:first-child {
+	font-weight: bold;
+}
+
+.listingblock .title {
+	background-color: #efefef;
+	margin-bottom: -1em;
+	padding: 1em;
+}
+
+@media (max-width: 700px) {
+	body {
+		display: block;
+	}
+}
+
+</style>
+<style>.toc-current{font-weight: bold;} .toc-root{font-family: "Open Sans","DejaVu Sans",sans-serif;
+                       font-size: 0.9em;} #content{display: flex; flex-direction: column; flex: 1 1 auto;}
+             .nav-footer{text-align: center; margin-top: auto;}
+             .nav-footer > p > a {white-space: nowrap;}</style>
+</head>
+<body id="allinone" class="book toc2 toc-left">
+<div id="header">
+<h1>Upsilon Docs</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<p><span class="toc-root"><a href="README.html">Upsilon Project Documentation</a></span></p><ul class="sectlevel2">
+<li><a href="_help_improve_this_documentation.html">1. Help improve this documentation!</a>
+</li>
+<li><a href="_services_introduction.html">1. Services &amp; Introduction</a>
+</li>
+<li><a href="_installation.html">2. Installation</a>
+<ul class="sectlevel2">
+<li><a href="_deployment_environments.html">2.1. Deployment Environments</a>
+</li>
+<li><a href="allinone.html"><span class="toc-current">2.2. "All in one" CentOS Virtual Machine</span></a>
+</li>
+<li><a href="onopenshift.html">2.3. Upsilon on OpenShift</a>
+</li>
+<li><a href="ondocker.html">2.4. Upsilon on Docker</a>
+</li>
+<li><a href="upsilon-ansible.html">2.5. Upsilon with Ansible</a>
+</li>
+<li><a href="yourway.html">2.6. Upsilon your way&#8230;&#8203;</a>
+</li>
+</ul>
+</li>
+<li><a href="_setup.html">3. Setup</a>
+</li>
+<li><a href="_usage.html">4. Usage</a>
+</li>
+<li><a href="_integration.html">5. Integration</a>
+</li>
+<li><a href="_common_issues.html">6. Common Issues</a>
+</li>
+<li><a href="_upgrading.html">7. Upgrading</a>
+</li>
+<li><a href="_appendix.html">8. Appendix</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect2">
+<h3 id="allinone"><a class="anchor" href="#allinone"></a><a class="link" href="#allinone">2.2. "All in one" CentOS Virtual Machine</a></h3>
+<div class="paragraph">
+<p>Upsilon can quite happily exist all in a single virtual machine for most
+deployments. You can scale out and change fairly easily after that too,
+but this sort of configuration is normally best for playing around,
+testing, kicking the tyres and similar.</p>
+</div>
+<div class="paragraph">
+<p>This article assumes you know how to install CentOS 7 in a virtual
+machine on your favourite hypervisor, or cloud. Upsilon doesn&#8217;t really
+care where it runs.</p>
+</div>
+<div class="sect3">
+<h4 id="virtual-machine-requirements"><a class="anchor" href="#virtual-machine-requirements"></a><a class="link" href="#virtual-machine-requirements">2.2.1. Virtual Machine requirements</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Hypervisor:</strong> any hypervisor/virtualisation that runs CentOS 7 Linux.</p>
+</li>
+<li>
+<p><strong>RAM:</strong> 4 Gb<br></p>
+</li>
+<li>
+<p><strong>CPU:</strong> 2x virtual CPUs</p>
+</li>
+<li>
+<p><strong>NIC:</strong> 1x public network interface</p>
+</li>
+<li>
+<p><strong>OS:</strong> CentOS 7, <a href="http://centos.org" class="bare">http://centos.org</a></p>
+</li>
+<li>
+<p><strong>Firewall:</strong> <em>see below&#8230;&#8203;</em></p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 54%;">
+<col style="width: 23%;">
+<col style="width: 23%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Protocol &amp; Port</th>
+<th class="tableblock halign-left valign-top">Source</th>
+<th class="tableblock halign-left valign-top">Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TCP Port 22</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inbound</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SSH inbound traffic - to connect to the VM for
+administration</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TCP Port 80</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inbound</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP inbound traffic - to access the web
+interface (upsilon-web)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TCP Port 4000</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inbound</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">upsilon-drone inbound traffic - REST API port</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TCP (Various port)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">outbound</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">What do you want upsilon to connect to?</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="install-packages-and-enable-dependant-services"><a class="anchor" href="#install-packages-and-enable-dependant-services"></a><a class="link" href="#install-packages-and-enable-dependant-services">2.2.2. Install packages and enable dependant services</a></h4>
+<div class="paragraph">
+<p>Become root on your virtual machine, lets begin :)</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>root@host:</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Add the upsilon yum repository, and the EPEL repository for CentOS
+(Extra Packages for Enterprise Linux);</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>root@host: cd /etc/yum.repos.d/
+root@host: curl -O http://repos.upsilonproject.io/upsilon-rpm-el7/upsilon-rpm-el7.repo
+root@host: rpm -U https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For RHEL, you need to enable the following repositories;</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>root@host: subscription-manager --enable 'rhel-7-server-rpms'
+root@host: subscription-manager --enable 'rhel-7-server-extras-rpms'
+root@host: subscription-manager --enable 'rhel-7-server-optional-rpms'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Lets install everything! Dependencies will be installed automatically.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>root@host: yum install centos-release-scl
+root@host: yum install upsilon-drone upsilon-web upsilon-database-sql rabbitmq-server mariadb-server httpd mariadb-server php php-pdo php-mysql</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Lets start the webserver (httpd), the database server (mariadb), the
+message server (rabbitmq) and make sure they restart on reboot (using
+<code>enable</code>);</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>root@host: systemctl enable httpd mariadb rabbitmq-server
+root@host: systemctl start httpd mariadb rabbitmq-server</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Should be no problems so far. Lets open up the port for the web
+interface if it&#8217;s not already open;</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>root@host: firewall-cmd --add-service http --permanent</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_create_a_upsilon_dns_record"><a class="anchor" href="#_create_a_upsilon_dns_record"></a><a class="link" href="#_create_a_upsilon_dns_record">2.2.3. Create a "upsilon" DNS record</a></h4>
+<div class="paragraph">
+<p>Many of the upsilon services rely on a DNS record called "upsilon" to find the messaging server, and perform auto-configuration.</p>
+</div>
+<div class="paragraph">
+<p>Because this a all in one virtual machine, we can simply edit the hosts file. Open <code>/etc/hosts</code> and add "upsilon" as a name for localhost;</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4 upsilon
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6 upsilon</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You should be able to <code>ping upsilon</code> if you have done this correctly.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[root@upsilon-allinone upsilon-drone]# ping upsilon
+PING localhost (127.0.0.1) 56(84) bytes of data.
+64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.023 ms
+64 bytes from localhost (127.0.0.1): icmp_seq=2 ttl=64 time=0.048 ms
+...</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_get_the_web_interface_installed"><a class="anchor" href="#_get_the_web_interface_installed"></a><a class="link" href="#_get_the_web_interface_installed">2.2.4. Get the web interface installed</a></h4>
+<div class="paragraph">
+<p>Now try and visit the web interface;</p>
+</div>
+<div class="paragraph">
+<p><a href="http://yourVmIPAddress/upsilon-web/" class="bare">http://yourVmIPAddress/upsilon-web/</a></p>
+</div>
+<div class="paragraph">
+<p>There isn&#8217;t anything that exciting in the web interface by default, so lets
+setup a drone so we can start monitoring stuff.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_start_using_the_web_interface"><a class="anchor" href="#_start_using_the_web_interface"></a><a class="link" href="#_start_using_the_web_interface">2.2.5. Start using the web interface</a></h4>
+<div class="paragraph">
+<p>In the web interface, go to Nodes &gt;&gt; List, you should see the custodian and
+drone show up. If so, you&#8217;re ready to get going!</p>
+</div>
+<div class="paragraph">
+<p>Go to <a id="setting-up-a-service-check"></a>.</p>
+</div>
+</div>
+</div>
+<div class="paragraph nav-footer">
+<p>← Previous: <a href="_deployment_environments.html">Deployment Environments</a> | ↑ Up: <a href="_installation.html">Installation</a> | ⌂ Home: <a href="README.html">Upsilon Project Documentation</a> | Next: <a href="onopenshift.html">Upsilon on OpenShift</a> →</p>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-12-21 00:03:56 UTC
+</div>
+</div>
+</body>
+</html>

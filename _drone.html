@@ -148,7 +148,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="_appendix" class="book toc2 toc-left">
+<body id="_drone" class="book toc2 toc-left">
 <div id="header">
 <h1>Upsilon Docs</h1>
 <div id="toc" class="toc2">
@@ -157,6 +157,18 @@ div.admonitionblock td:first-child {
 <li><a href="_help_improve_this_documentation.html">1. Help improve this documentation!</a>
 </li>
 <li><a href="_services_introduction.html">1. Services &amp; Introduction</a>
+<ul class="sectlevel2">
+<li><a href="_architecture_overview.html">1.1. Architecture Overview</a>
+</li>
+<li><a href="_drone.html"><span class="toc-current">1.2. Drone</span></a>
+</li>
+<li><a href="_web.html">1.3. Web</a>
+</li>
+<li><a href="_reactor.html">1.4. Reactor</a>
+</li>
+<li><a href="_custodian.html">1.5. Custodian</a>
+</li>
+</ul>
 </li>
 <li><a href="_installation.html">2. Installation</a>
 </li>
@@ -170,29 +182,63 @@ div.admonitionblock td:first-child {
 </li>
 <li><a href="_upgrading.html">7. Upgrading</a>
 </li>
-<li><a href="_appendix.html"><span class="toc-current">8. Appendix</span></a>
+<li><a href="_appendix.html">8. Appendix</a>
 </li>
 </ul>
 </div>
 </div>
 <div id="content">
-<div class="sect1">
-<h2 id="_appendix"><a class="anchor" href="#_appendix"></a><a class="link" href="#_appendix">8. Appendix</a></h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_drone"><a class="anchor" href="#_drone"></a><a class="link" href="#_drone">1.2. Drone</a></h3>
 <div class="paragraph">
-<p>Please check out the website for further links, and to contact the community.</p>
+<p>upsilon-drone runs the service checks.</p>
 </div>
+<div class="sect3">
+<h4 id="_configuration"><a class="anchor" href="#_configuration"></a><a class="link" href="#_configuration">1.2.1. Configuration</a></h4>
+<div class="sect4">
+<h5 id="_autoconfiguration"><a class="anchor" href="#_autoconfiguration"></a><a class="link" href="#_autoconfiguration">Autoconfiguration</a></h5>
 <div class="paragraph">
-<p><a href="http://upsilonproject.io" class="bare">http://upsilonproject.io</a></p>
+<p>upsilon-drone will look for the following environment variables on startup;</p>
 </div>
-<div class="ulist">
-<ul>
-</ul>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Environment Variable</th>
+<th class="tableblock halign-left valign-top">Example</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>UPSILON_IDENTIFIER</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">test.example.com</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The unique identifier for the node</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>UPSILON_CONFIG_SYSTEM_AMQPHOST</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">amqp.example.com</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The address of the AMQP Server</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_config_xml"><a class="anchor" href="#_config_xml"></a><a class="link" href="#_config_xml">config.xml</a></h5>
+<div class="paragraph">
+<p>upsilon-drone can be manually configured by a simple config.xml file, usually installed at
+<code>/etc/upsilon-drone/config.xml</code> on most platforms. This is necessary if you
+don&#8217;t want to use central configuration management for some reason.</p>
+</div>
 </div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="_upgrading.html">Upgrading</a> | ↑ Up: <a href="README.html">Upsilon Project Documentation</a></p>
+<p>← Previous: <a href="_architecture_overview.html">Architecture Overview</a> | ↑ Up: <a href="_services_introduction.html">Services &amp; Introduction</a> | ⌂ Home: <a href="README.html">Upsilon Project Documentation</a> | Next: <a href="_web.html">Web</a> →</p>
 </div>
 </div>
 <div id="footer">

@@ -148,7 +148,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="_appendix" class="book toc2 toc-left">
+<body id="custodian" class="book toc2 toc-left">
 <div id="header">
 <h1>Upsilon Docs</h1>
 <div id="toc" class="toc2">
@@ -161,6 +161,16 @@ div.admonitionblock td:first-child {
 <li><a href="_installation.html">2. Installation</a>
 </li>
 <li><a href="_setup.html">3. Setup</a>
+<ul class="sectlevel2">
+<li><a href="setup-db.html">3.1. Database</a>
+</li>
+<li><a href="_web_2.html">3.2. Web</a>
+</li>
+<li><a href="_drone_2.html">3.3. Drone</a>
+</li>
+<li><a href="custodian.html"><span class="toc-current">3.4. Custodian</span></a>
+</li>
+</ul>
 </li>
 <li><a href="_usage.html">4. Usage</a>
 </li>
@@ -170,29 +180,46 @@ div.admonitionblock td:first-child {
 </li>
 <li><a href="_upgrading.html">7. Upgrading</a>
 </li>
-<li><a href="_appendix.html"><span class="toc-current">8. Appendix</span></a>
+<li><a href="_appendix.html">8. Appendix</a>
 </li>
 </ul>
 </div>
 </div>
 <div id="content">
-<div class="sect1">
-<h2 id="_appendix"><a class="anchor" href="#_appendix"></a><a class="link" href="#_appendix">8. Appendix</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Please check out the website for further links, and to contact the community.</p>
+<div class="sect2">
+<h3 id="custodian"><a class="anchor" href="#custodian"></a><a class="link" href="#custodian">3.4. Custodian</a></h3>
+<div class="literalblock">
+<div class="content">
+<pre>user@root: yum install upsilon-custodian -y</pre>
+</div>
 </div>
 <div class="paragraph">
-<p><a href="http://upsilonproject.io" class="bare">http://upsilonproject.io</a></p>
+<p>upsilon-custodian should work without any additional configuration, so lets
+start it.</p>
 </div>
-<div class="ulist">
-<ul>
-</ul>
+<div class="literalblock">
+<div class="content">
+<pre>user@root: service upsilon-custodian restart</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Lets do another ping to check it came up;</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>root@host: upsilon-ping
+Waiting 3 seconds for responses to pings.
++--------------------------------------+--------------------+------------+
+|              Identifier              |      Version       |    Type    |
++--------------------------------------+--------------------+------------+
+|          upsilon-custodian           |    development     |  db, amqp  |
+| 5b4e1ec4-ab8d-4f03-88b3-0746f6e5922e | 2.2.0-0-1514431787 | amqp, rest |
++--------------------------------------+--------------------+------------+</pre>
 </div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="_upgrading.html">Upgrading</a> | ↑ Up: <a href="README.html">Upsilon Project Documentation</a></p>
+<p>← Previous: <a href="_drone_2.html">Drone</a> | ↑ Up: <a href="_setup.html">Setup</a> | ⌂ Home: <a href="README.html">Upsilon Project Documentation</a> | Next: <a href="_usage.html">Usage</a> →</p>
 </div>
 </div>
 <div id="footer">

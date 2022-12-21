@@ -148,7 +148,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="_appendix" class="book toc2 toc-left">
+<body id="setup-db" class="book toc2 toc-left">
 <div id="header">
 <h1>Upsilon Docs</h1>
 <div id="toc" class="toc2">
@@ -161,6 +161,16 @@ div.admonitionblock td:first-child {
 <li><a href="_installation.html">2. Installation</a>
 </li>
 <li><a href="_setup.html">3. Setup</a>
+<ul class="sectlevel2">
+<li><a href="setup-db.html"><span class="toc-current">3.1. Database</span></a>
+</li>
+<li><a href="_web_2.html">3.2. Web</a>
+</li>
+<li><a href="_drone_2.html">3.3. Drone</a>
+</li>
+<li><a href="custodian.html">3.4. Custodian</a>
+</li>
+</ul>
 </li>
 <li><a href="_usage.html">4. Usage</a>
 </li>
@@ -170,29 +180,91 @@ div.admonitionblock td:first-child {
 </li>
 <li><a href="_upgrading.html">7. Upgrading</a>
 </li>
-<li><a href="_appendix.html"><span class="toc-current">8. Appendix</span></a>
+<li><a href="_appendix.html">8. Appendix</a>
 </li>
 </ul>
 </div>
 </div>
 <div id="content">
-<div class="sect1">
-<h2 id="_appendix"><a class="anchor" href="#_appendix"></a><a class="link" href="#_appendix">8. Appendix</a></h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="setup-db"><a class="anchor" href="#setup-db"></a><a class="link" href="#setup-db">3.1. Database</a></h3>
 <div class="paragraph">
-<p>Please check out the website for further links, and to contact the community.</p>
+<p>Upsilon uses the MySQL database. Put it in a container, install it natively, or
+however you like! There is lots of documentation on the web about how to setup
+a MySQL Database.</p>
 </div>
 <div class="paragraph">
-<p><a href="http://upsilonproject.io" class="bare">http://upsilonproject.io</a></p>
+<p>Once it is installed, we need to set a <code>upsilon</code> database and import the
+schema, and initial data.</p>
 </div>
-<div class="ulist">
-<ul>
-</ul>
+<div class="sect3">
+<h4 id="_if_you_are_running_on_a_linux_machine_without_containers"><a class="anchor" href="#_if_you_are_running_on_a_linux_machine_without_containers"></a><a class="link" href="#_if_you_are_running_on_a_linux_machine_without_containers">3.1.1. If you are running on a Linux machine (without containers);</a></h4>
+<div class="paragraph">
+<p>Make sure the <code>upsilon-database-sql</code> package is installed.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>user@host: yum install upsilon-database-sql</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Go into the database setup directory, and setup some environment variables;</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>root@host: cd /usr/share/upsilon-database-sql/
+root@host: export UP_DATABASE_USER=myuser
+root@host: export UP_DATABASE_PASS=mypassword
+root@host: export UP_DATABASE_HOST=localhost</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Currently the database name must be <code>upsilon</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>root@host: mysql -u $UP_DATABASE_USER -p $UP_DATABASE_PASS -e 'CREATE DATABASE upsilon' -h $UP_DATABASE_HOST</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_run_the_database_migrations"><a class="anchor" href="#_run_the_database_migrations"></a><a class="link" href="#_run_the_database_migrations">3.1.2. Run the database migrations</a></h4>
+<div class="paragraph">
+<p>The <code>updb</code> program can now populate the initial database.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>user@host: ./updb</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You will get output something like this;</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>INFO[0000] conf: {Database:{User:myuser Pass:mypassword Host:localhost Name:upsilon} IsLoaded:true Force:0}
+INFO[0000] db: mysql://upsilon:upsilon@tcp(upsilon)/upsilon
+INFO[0000] Migrations directory: /home/xconspirisist/sandbox/upsilon-database-sql/mysql/migrations
+...etc...</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The database should now be ready to use. Note that the <code>updb</code> tool is used
+during upgrades too.</p>
 </div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="_upgrading.html">Upgrading</a> | ↑ Up: <a href="README.html">Upsilon Project Documentation</a></p>
+<p>↑ Up: <a href="_setup.html">Setup</a> | ⌂ Home: <a href="README.html">Upsilon Project Documentation</a> | Next: <a href="_web_2.html">Web</a> →</p>
 </div>
 </div>
 <div id="footer">

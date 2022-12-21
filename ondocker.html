@@ -148,7 +148,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="_appendix" class="book toc2 toc-left">
+<body id="ondocker" class="book toc2 toc-left">
 <div id="header">
 <h1>Upsilon Docs</h1>
 <div id="toc" class="toc2">
@@ -159,6 +159,20 @@ div.admonitionblock td:first-child {
 <li><a href="_services_introduction.html">1. Services &amp; Introduction</a>
 </li>
 <li><a href="_installation.html">2. Installation</a>
+<ul class="sectlevel2">
+<li><a href="_deployment_environments.html">2.1. Deployment Environments</a>
+</li>
+<li><a href="allinone.html">2.2. "All in one" CentOS Virtual Machine</a>
+</li>
+<li><a href="onopenshift.html">2.3. Upsilon on OpenShift</a>
+</li>
+<li><a href="ondocker.html"><span class="toc-current">2.4. Upsilon on Docker</span></a>
+</li>
+<li><a href="upsilon-ansible.html">2.5. Upsilon with Ansible</a>
+</li>
+<li><a href="yourway.html">2.6. Upsilon your way&#8230;&#8203;</a>
+</li>
+</ul>
 </li>
 <li><a href="_setup.html">3. Setup</a>
 </li>
@@ -170,29 +184,25 @@ div.admonitionblock td:first-child {
 </li>
 <li><a href="_upgrading.html">7. Upgrading</a>
 </li>
-<li><a href="_appendix.html"><span class="toc-current">8. Appendix</span></a>
+<li><a href="_appendix.html">8. Appendix</a>
 </li>
 </ul>
 </div>
 </div>
 <div id="content">
-<div class="sect1">
-<h2 id="_appendix"><a class="anchor" href="#_appendix"></a><a class="link" href="#_appendix">8. Appendix</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Please check out the website for further links, and to contact the community.</p>
+<div class="sect2">
+<h3 id="ondocker"><a class="anchor" href="#ondocker"></a><a class="link" href="#ondocker">2.4. Upsilon on Docker</a></h3>
+<div class="sect3">
+<h4 id="_drone_on_docker"><a class="anchor" href="#_drone_on_docker"></a><a class="link" href="#_drone_on_docker">2.4.1. Drone on Docker</a></h4>
+<div class="literalblock">
+<div class="content">
+<pre>docker create --name upsilon-drone -p 4000:4000 upsilonproject/drone -EUPSILON_IDENTIFIER=myDroneName</pre>
 </div>
-<div class="paragraph">
-<p><a href="http://upsilonproject.io" class="bare">http://upsilonproject.io</a></p>
-</div>
-<div class="ulist">
-<ul>
-</ul>
 </div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="_upgrading.html">Upgrading</a> | ↑ Up: <a href="README.html">Upsilon Project Documentation</a></p>
+<p>← Previous: <a href="onopenshift.html">Upsilon on OpenShift</a> | ↑ Up: <a href="_installation.html">Installation</a> | ⌂ Home: <a href="README.html">Upsilon Project Documentation</a> | Next: <a href="upsilon-ansible.html">Upsilon with Ansible</a> →</p>
 </div>
 </div>
 <div id="footer">
