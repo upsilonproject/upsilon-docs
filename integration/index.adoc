@@ -1,9 +1,0 @@
-Integration
------------
-
-include::grafana.adoc[Grafana]
-
-Authentication
-~~~~~~~~~~~~~~
-
-Really sorry, but Upsilon does not really have any integration into authentication providers at the moment :( 

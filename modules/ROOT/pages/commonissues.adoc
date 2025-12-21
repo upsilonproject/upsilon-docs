@@ -6,6 +6,6 @@ Database Issues
 
 #### web database install, Settings table does not exist
 
-image::images/screenshots/web-install-nosettingstable.png[]
+image::screenshots/web-install-nosettingstable.png[]
 
 You need to link:#_database[setup the database].

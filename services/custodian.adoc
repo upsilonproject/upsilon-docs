@@ -1,4 +1,0 @@
-[[custodian]]
-=== Custodian
-
-TODO.

@@ -1,0 +1,26 @@
+* xref:index.adoc[Introduction]
+* xref:services-index.adoc[Services & Introduction]
+** xref:cli.adoc[CLI]
+** xref:drone.adoc[Drone]
+** xref:web.adoc[Web]
+** xref:reactor.adoc[Reactor]
+** xref:custodian.adoc[Custodian]
+* Installation & Deployment
+** xref:upsilon-allinone-centos.adoc[Upsilon all-in-one on CentOS]
+** xref:upsilon-on-openshift.adoc[Upsilon on OpenShift]
+** xref:upsilon-docker.adoc[Upsilon in Docker Containers]
+** xref:upsilon-ansible.adoc[Upsilon with Ansible]
+** xref:upsilon-your-way.adoc[Upsilon your way...]
+* Setup
+** xref:database.adoc[Database Setup]
+** xref:setup-web.adoc[Web Setup]
+** xref:setup-drone.adoc[Drone Setup]
+** xref:setup-custodian.adoc[Custodian Setup]
+* Usage
+** xref:usage-index.adoc[Usage]
+* Integration
+** xref:grafana.adoc[Grafana]
+* xref:commonissues.adoc[Common Issues]
+* xref:upgrading.adoc[Upgrading]
+* xref:appendix.adoc[Appendix]
+

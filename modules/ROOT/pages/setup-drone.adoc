@@ -5,7 +5,7 @@ upsilon-drone is the workhorse of Upsilon, and you need at least one drone to ge
 
 Here's how the architecture works;
 
-image:images/diagrams/drone-custodian-web-architecture.png[Architecture]
+image::diagrams/drone-custodian-web-architecture.png[Architecture]
 
 
 The upsilon-drone service ships with a "sample" configuration file that is ready to use in this simple deployment;

@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "@antora/lunr-extension": "^1.0.0-alpha.12",
+    "antora": "^3.1.14",
+    "asciidoctor-kroki": "^0.18.1"
+  },
+  "devDependencies": {
+    "@asciidoctor/tabs": "^1.0.0-beta.6"
+  }
+}
+

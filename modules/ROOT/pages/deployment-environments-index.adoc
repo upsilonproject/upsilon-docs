@@ -11,11 +11,3 @@ Here are a set of common deployment environments. It's important to know that yo
 * Upsilon in docker Containers (~10 minutes)
 * link:#upsilon-ansible[Upsilon with Ansible] (advanced installation)
 * link:#yourway[Upsilon your way...] (advanced installation)
-
-include::upsilon-allinone-centos.adoc[]
-include::upsilon-on-openshift.adoc[]
-include::upsilon-docker.adoc[]
-include::upsilon-ansible.adoc[]
-include::upsilon-your-way.adoc[]
-
-

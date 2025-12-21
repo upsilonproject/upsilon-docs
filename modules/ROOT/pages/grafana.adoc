@@ -7,7 +7,7 @@ Views that make building Grafana queries a little easier.
 
 ==== Services Dashboard
 
-image:images/screenshots/grafana-services-overview.png[Services Overview]
+image::screenshots/grafana-services-overview.png[Services Overview]
 
 ===== SQL View
 
@@ -15,7 +15,7 @@ image:images/screenshots/grafana-services-overview.png[Services Overview]
 
 ===== Grafana Data Source Query (MySQL)
 
-image:images/screenshots/grafana-services-overview-data-source.png[Data source]
+image::screenshots/grafana-services-overview-data-source.png[Data source]
 
 ===== Grafana Table view
 
@@ -23,4 +23,4 @@ Use normal settings for table column headers.
 
 Here is how you setup the karma column highlighting. 
 
-image:images/screenshots/grafana-table-karma-column.png[Table karma Column]
+image::screenshots/grafana-table-karma-column.png[Table karma Column]

@@ -9,7 +9,7 @@ config file has been deleted).
 
 This is what the upsilon-web installer looks like;
 
-image::images/screenshots/web-installer-firststart.png[]
+image::screenshots/web-installer-firststart.png[]
 
 #### System tests
 
@@ -38,7 +38,7 @@ connection.
 NOTE:  In some environments like OpenShift the username and password can be automatically completed for you as shown below. In other cases, you must specify the username and password of an existing MySQL user, or use the root user.
 
 [caption="The web installer screen showing the database setup"]
-image::images/screenshots/web-installer-database.png[]
+image::screenshots/web-installer-database.png[]
 
 **Common Issues**
 
@@ -50,6 +50,6 @@ The default first admin is `admin`, but you can change that here and set a
 password that you like as well. Additional administrators can be configured
 later too.
 
-image::images/screenshots/web-installer-admin.png[]
+image::screenshots/web-installer-admin.png[]
 
 
