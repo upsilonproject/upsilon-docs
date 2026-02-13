@@ -1,0 +1,4 @@
+# Setup
+
+This section is about how to setup Upsilon once it is installed.
+

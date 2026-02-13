@@ -1,8 +1,7 @@
-default: graphviz-diagrams
-	asciidoctor -r asciidoctor-multipage -b multipage_html5 -a stylesheet=style.css index.adoc -D docs/
+default: antora
 
-graphviz-diagrams:
-	mkdir -p images/diagrams/
-	dot -Tpng graphviz-diagrams/drone-custodian-web-architecture.gv -o images/diagrams/drone-custodian-web-architecture.png -Nfontname=helvetica -Nlabelloc=b -Nlabeldistance=200 -Efontname=helvetica -Elabelfontsize=5
+antora:
+	npx antora antora-playbook.yml --log-level warn
+	cp -r static/* build/site/ 2>/dev/null || true
 
-.PHONY: default graphviz-diagrams
+.PHONY: default antora

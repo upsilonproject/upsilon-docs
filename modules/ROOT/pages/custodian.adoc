@@ -1,0 +1,4 @@
+[[custodian]]
+=== Custodian
+
+Custodian saves messages from AMQP to the database.

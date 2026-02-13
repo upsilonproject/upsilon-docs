@@ -1,0 +1,50 @@
+=== Drone
+
+upsilon-drone is the service that actually runs commands - you should start with at least one drone, and then build out from there.
+
+The drone service runs by reading a `config.yml`, and can even run commands quite happily in total isolation from everything else - there is even a `--offline` mode if you want to just run the drone disconnected from anything else.
+
+<<<<<<< HEAD:setup/drone.adoc
+==== Overriding service autoconfiguration
+=======
+image::diagrams/drone-custodian-web-architecture.png[Architecture]
+>>>>>>> ca3585072b063ad1cac63551d56ce759dc3da6bb:modules/ROOT/pages/setup-drone.adoc
+
+All services in the upsilon project try hard to use autoconfiguration to make your life easier, so they should just work "out of the box". However, sometimes it is necessary to override these defaults. This is possible with the following environment variables on startup;
+
+// FIXME not yet implemented in the Go version
+[options = "header"]
+|=======================================================================
+| Environment Variable | Example          | Description                
+| `UPSILON_IDENTIFIER` | test.example.com | The unique identifier for the node 
+| `UPSILON_CONFIG_SYSTEM_AMQPHOST` | amqp.example.com | The address of the AMQP Server 
+|=======================================================================
+
+==== Command Configuration
+
+The drone service looks for it's configuration files in the following places, in order;
+
+* `/etc/upsilon-drone-fabric/upsilon-config/config.yml`
+
+While you can create this directory manually, and write a configuration file, it is more normal to let the drone get it's configuration from Git. This keeps the configuration file saved and versioned, etc.
+
+===== config.yml Example
+
+This is a very simple configuration file example, that just runs the `date` command every minute.
+
+[yaml]
+....
+commands:
+  - name: date
+    exec: date
+
+groups:
+  - hosts: [all]
+    commands:
+      - command: date
+        interval 1
+....
+
+Looks good. However, we need a custodian to write results to a database now...
+
+
