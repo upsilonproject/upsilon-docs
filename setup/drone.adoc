@@ -1,36 +1,44 @@
-Drone
-~~~~~
+=== Drone
 
-upsilon-drone is the workhorse of Upsilon, and you need at least one drone to get anything done.
+upsilon-drone is the service that actually runs commands - you should start with at least one drone, and then build out from there.
 
-Here's how the architecture works;
+The drone service runs by reading a `config.yml`, and can even run commands quite happily in total isolation from everything else - there is even a `--offline` mode if you want to just run the drone disconnected from anything else.
 
-image:images/diagrams/drone-custodian-web-architecture.png[Architecture]
+==== Overriding service autoconfiguration
 
+All services in the upsilon project try hard to use autoconfiguration to make your life easier, so they should just work "out of the box". However, sometimes it is necessary to override these defaults. This is possible with the following environment variables on startup;
 
-The upsilon-drone service ships with a "sample" configuration file that is ready to use in this simple deployment;
+// FIXME not yet implemented in the Go version
+[options = "header"]
+|=======================================================================
+| Environment Variable | Example          | Description                
+| `UPSILON_IDENTIFIER` | test.example.com | The unique identifier for the node 
+| `UPSILON_CONFIG_SYSTEM_AMQPHOST` | amqp.example.com | The address of the AMQP Server 
+|=======================================================================
 
+==== Command Configuration
+
+The drone service looks for it's configuration files in the following places, in order;
+
+* `/etc/upsilon-drone-fabric/upsilon-config/config.yml`
+
+While you can create this directory manually, and write a configuration file, it is more normal to let the drone get it's configuration from Git. This keeps the configuration file saved and versioned, etc.
+
+===== config.yml Example
+
+This is a very simple configuration file example, that just runs the `date` command every minute.
+
+[yaml]
 ....
-root@host: cd /etc/upsilon-drone/
-root@host: cp config.xml.sample config.xml
-....
+commands:
+  - name: date
+    exec: date
 
-We should now start the drone, which should pick up the configuration file
-
-....
-root@host: service upsilon-drone restart
-....
-
-Lets try and ping it;
-
-....
-root@host: upsilon-ping
-Waiting 3 seconds for responses to pings.
-+--------------------------------------+--------------------+------------+
-|              Identifier              |      Version       |    Type    |
-+--------------------------------------+--------------------+------------+
-| 5b4e1ec4-ab8d-4f03-88b3-0746f6e5922e | 2.2.0-0-1514431787 | amqp, rest |
-+--------------------------------------+--------------------+------------+
+groups:
+  - hosts: [all]
+    commands:
+      - command: date
+        interval 1
 ....
 
 Looks good. However, we need a custodian to write results to a database now...
