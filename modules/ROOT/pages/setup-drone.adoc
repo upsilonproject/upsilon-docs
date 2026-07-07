@@ -4,11 +4,9 @@ upsilon-drone is the service that actually runs commands - you should start with
 
 The drone service runs by reading a `config.yml`, and can even run commands quite happily in total isolation from everything else - there is even a `--offline` mode if you want to just run the drone disconnected from anything else.
 
-<<<<<<< HEAD:setup/drone.adoc
 ==== Overriding service autoconfiguration
-=======
+
 image::diagrams/drone-custodian-web-architecture.png[Architecture]
->>>>>>> ca3585072b063ad1cac63551d56ce759dc3da6bb:modules/ROOT/pages/setup-drone.adoc
 
 All services in the upsilon project try hard to use autoconfiguration to make your life easier, so they should just work "out of the box". However, sometimes it is necessary to override these defaults. This is possible with the following environment variables on startup;
 

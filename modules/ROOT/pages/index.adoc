@@ -6,7 +6,7 @@
 image:https://travis-ci.org/upsilonproject/upsilon-docs.svg?branch=master["Build Status", link="https://travis-ci.org/upsilonproject/upsilon-docs"]
 
 These are the Upsilon docs. They are available at
-http://docs.upsilonproject.io[docs.upsilonproject.io] and the
+https://upsilonproject.github.io/upsilon-docs[upsilonproject.github.io/upsilon-docs] and the
 https://github.com/upsilonproject/upsilon-docs[upsilon-docs project on GitHub].
 
 To learn more about the Upsilon project, please visit http://www.upsilonproject.io.

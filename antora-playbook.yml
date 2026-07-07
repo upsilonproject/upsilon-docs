@@ -2,6 +2,7 @@
 ---
 site:
   title: Upsilon docs
+  url: https://upsilonproject.github.io/upsilon-docs
   start_page: ROOT::index.adoc
   robots: allow
 content:
