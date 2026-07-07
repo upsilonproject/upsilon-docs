@@ -1,4 +1,15 @@
-# Setup
+= Setup
 
-This section is about how to setup Upsilon once it is installed.
+This section covers initial configuration after Upsilon packages are installed.
 
+Modern Upsilon environments are bootstrapped with xref:cli.adoc[upsilon-cli] from a control node. The CLI publishes HTTP bootstrap assets, initializes the fabric-config git repository, and optionally distributes the `upsilon-drone` binary. Individual services are then configured in the order below.
+
+== Recommended setup order
+
+. xref:database.adoc[Database Setup] — create the MySQL database and schema
+. xref:setup-controlnode.adoc[Control Node Bootstrap] — run `upsilon controlnode bootstrap` to publish bootstrap assets and fabric-config
+. xref:setup-web.adoc[Web Setup] — complete the web installer
+. xref:setup-drone.adoc[Drone Setup] — bootstrap drones with `curl http://upsilon/bootstrap | bash` or run drones manually
+. xref:setup-custodian.adoc[Custodian Setup] — connect the custodian to the database
+
+For a single-machine walkthrough that includes bootstrap, see xref:upsilon-allinone-centos.adoc[Upsilon all-in-one on CentOS].

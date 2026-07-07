@@ -1,5 +1,4 @@
-Appendix
---------
+= Appendix
 
 Please check out the website for further links, and to contact the community.
 

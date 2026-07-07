@@ -1,5 +1,4 @@
-Grafana
-~~~~~~~
+= Grafana
 
 Grafana can quite happily read from the Upsilon MySQL database and show lots of
 information. The easiest way to probably do this is create a couple of SQL

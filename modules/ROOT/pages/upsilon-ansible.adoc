@@ -1,6 +1,5 @@
+= Upsilon with Ansible
 [[upsilon-ansible]]
-Upsilon with Ansible
-~~~~~~~~~~~~~~~~~~~~
 
 *Note:* These ansible scripts are in very *early development*, they
 help, but don't install a full environment. Only useful if you know

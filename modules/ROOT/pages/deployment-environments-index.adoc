@@ -1,4 +1,4 @@
-== Installation
+= Installation
 
 This section could be called **installation options**, as it presents a couple of different options to install Upsilon. However, it's probably a bit more correct to think of these as "deployment environments" so that is the terminology used by this documentation. 
 

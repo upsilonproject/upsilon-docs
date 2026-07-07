@@ -1,6 +1,5 @@
+= Upsilon on OpenShift
 [[onopenshift]]
-Upsilon on OpenShift
-~~~~~~~~~~~~~~~~~~~~
 
 Upsilon can be deployed quite easily on top of OpenShift 3 - all it's
 services dockerized/containerized. You can scale-out of the OpenShift

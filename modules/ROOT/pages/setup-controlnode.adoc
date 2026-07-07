@@ -1,0 +1,183 @@
+= Control Node Bootstrap
+[[setup-controlnode]]
+
+The control node is the central host that drones and operators connect to. It serves the AMQP message bus, publishes bootstrap assets over HTTP, and hosts the fabric-config git repository that drones pull their configuration from.
+
+Bootstrapping a control node is done with xref:cli.adoc[upsilon-cli], not by hand-editing files on the server. The CLI deploys a bootstrap script, initializes the fabric-config bare git repository, and optionally publishes an `upsilon-drone` binary for new nodes to download.
+
+==== Prerequisites
+
+Before running bootstrap, the control node should have:
+
+* A DNS name (or `/etc/hosts` entry) that drones and operators can reach — commonly `upsilon`
+* HTTP service with a public document root (default: `/var/www/html`)
+* RabbitMQ (or another AMQP broker) reachable at the controller hostname
+* `git` installed
+* A `git` system user if you want drones to clone fabric-config over SSH (recommended)
+
+When bootstrap runs as root, the fabric bare repository is owned by `git:git` automatically.
+
+==== Install upsilon-cli
+
+Build or install the CLI on a machine that can write to the control node's HTML root and fabric directories. On the control node itself is the usual choice.
+
+[source,bash]
+----
+git clone https://github.com/upsilonproject/upsilon-cli.git
+cd upsilon-cli
+make
+sudo make install
+----
+
+This installs the `upsilon` command to `/usr/local/sbin/upsilon`.
+
+==== Configure a context
+
+The CLI stores connection details in `~/.upsilon/config`. Create a context that describes your control node:
+
+[source,bash]
+----
+upsilon context set production \
+  --controller-host upsilon \
+  --html-root /var/www/html \
+  --amqp-host upsilon \
+  --amqp-user guest \
+  --amqp-pass guest \
+  --fabric-bare-repo /var/lib/upsilon/fabric/upsilon-config \
+  --current
+----
+
+Verify the active context:
+
+[source,bash]
+----
+upsilon context current
+upsilon context ls
+----
+
+Contexts can also be selected per command with `--context` or by switching with `upsilon context use`.
+
+==== Bootstrap the control node
+
+Run bootstrap on the control node (or from another host with access to the same paths):
+
+[source,bash]
+----
+upsilon controlnode bootstrap \
+  --drone-binary /usr/local/sbin/upsilon-drone
+----
+
+This single command:
+
+. Writes `http://<controller-host>/bootstrap` — a shell script new drones can pipe to `bash`
+. Initializes `/var/lib/upsilon/fabric/upsilon-config` as a bare git repository with a starter `config.yml` (unless it already has commits)
+. Copies `upsilon-drone` and an `upsilon-drone.timestamp` version file into the HTML root (when `--drone-binary` is passed)
+
+Example output:
+
+[source]
+----
+Control node bootstrap complete
+  HTML root:          /var/www/html
+  Bootstrap script:   /var/www/html/bootstrap
+  Public bootstrap:   http://upsilon/bootstrap
+  Fabric bare repo:   /var/lib/upsilon/fabric/upsilon-config
+  Fabric clone URL:   ssh://git@upsilon/var/lib/upsilon/fabric/upsilon-config
+  Drone binary:       /var/www/html/upsilon-drone
+  Drone version file: /var/www/html/upsilon-drone.timestamp
+  Public drone:       http://upsilon/upsilon-drone
+
+Clone fabric config locally:
+  upsilon fabric clone
+
+Cloud-init example:
+  curl -fsS http://upsilon/bootstrap | bash
+----
+
+[[controlnode-bootstrap-flags]]
+==== Bootstrap flags
+
+Most flags default to values from the current context and only need to be set when overriding them.
+
+[cols="30%,70%",options="header"]
+|===
+| Flag | Description
+
+| `--controller-host`
+| Hostname embedded in bootstrap script URLs (default: context `controllerhost`)
+
+| `--html-root`
+| Public HTTP document root (default: `/var/www/html`)
+
+| `--fabric-bare-repo`
+| Path to the bare fabric-config git repo on the controller (default: `/var/lib/upsilon/fabric/upsilon-config`)
+
+| `--fabric-config`
+| Source `config.yml` to seed a new fabric repo (default: embedded starter config)
+
+| `--drone-binary`
+| Path to an `upsilon-drone` binary to publish. Omit to deploy bootstrap script and fabric repo only.
+
+| `--version`
+| Version string written to `upsilon-drone.timestamp` (default: output of `upsilon-drone version`)
+|===
+
+==== Deploy individual assets
+
+To update only part of the bootstrap surface, use the `deploy` subcommands:
+
+[source,bash]
+----
+# Re-publish the bootstrap script only
+upsilon controlnode deploy script
+
+# Re-publish the drone binary and version file
+upsilon controlnode deploy drone --drone-binary /usr/local/sbin/upsilon-drone
+----
+
+==== Clone and edit fabric config locally
+
+After bootstrap, clone the fabric-config repository to your workstation or the control node:
+
+[source,bash]
+----
+upsilon fabric clone
+----
+
+This clones via SSH into `~/.upsilon/contexts/<context>/fabric` and updates the context's `local-fabric-repo` setting. Edit `config.yml`, commit, and push from that clone. Drones pick up changes when they run `git pull` (triggered with `upsilon request gitpull`).
+
+List commands defined in the local fabric clone:
+
+[source,bash]
+----
+upsilon fabric commands
+----
+
+==== Bootstrap a new drone
+
+Once the control node is bootstrapped, new drones need only HTTP access to the controller. The bootstrap script downloads the drone binary, clones fabric-config, and starts the drone:
+
+[source,bash]
+----
+curl -fsS http://upsilon/bootstrap | bash
+----
+
+Optional environment variables:
+
+[cols="30%,70%",options="header"]
+|===
+| Variable | Description
+
+| `UPSILON_CONTROLLER_HOST`
+| Override the controller hostname (default: value from bootstrap script)
+
+| `UPSILON_IDENTIFIER`
+| Set the drone's unique node identifier
+
+| `UPSILON_DISABLE_UPDATES`
+| Set to `1` to pass `--disable-updates` to the drone
+|===
+
+For cloud-init or container entrypoints, use the same `curl | bash` one-liner shown in the bootstrap command output.
+
+See xref:setup-drone.adoc[Drone Setup] for how drones consume fabric-config after bootstrap.

@@ -1,4 +1,6 @@
+= Upsilon all-in-one on CentOS
 [[allinone]]
+
 === "All in one" CentOS Virtual Machine
 
 Upsilon can quite happily exist all in a single virtual machine for most
@@ -113,6 +115,20 @@ PING localhost (127.0.0.1) 56(84) bytes of data.
 64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.023 ms
 64 bytes from localhost (127.0.0.1): icmp_seq=2 ttl=64 time=0.048 ms
 ...
+....
+
+Bootstrap the control node
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Install xref:cli.adoc[upsilon-cli] and run bootstrap to publish the drone bootstrap script, fabric-config git repository, and `upsilon-drone` binary over HTTP. See xref:setup-controlnode.adoc[Control Node Bootstrap] for full details.
+
+....
+
+root@host: git clone https://github.com/upsilonproject/upsilon-cli.git
+root@host: cd upsilon-cli && make && make install
+root@host: upsilon context set default --controller-host upsilon --current
+root@host: upsilon controlnode bootstrap --drone-binary /usr/local/sbin/upsilon-drone
+
 ....
 
 Get the web interface installed

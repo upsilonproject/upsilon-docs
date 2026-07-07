@@ -1,7 +1,117 @@
+= CLI
 [[cli]]
-=== CLI
 
-Command line interface, for reporting and cluster admin. 
+https://github.com/upsilonproject/upsilon-cli[upsilon-cli] is the command-line tool for bootstrapping the control node, managing fabric configuration, and administering a running Upsilon cluster over AMQP.
 
-https://github.com/upsilonproject/upsilon-cli
+The installed binary is named `upsilon`.
 
+==== Installation
+
+[source,bash]
+----
+git clone https://github.com/upsilonproject/upsilon-cli.git
+cd upsilon-cli
+make
+sudo make install
+----
+
+The CLI reads configuration from `~/.upsilon/config`. A legacy file at `~/.upsilon-cli.yaml` or `/etc/upsilon-cli/upsilon-cli.yaml` is still merged for AMQP settings if present.
+
+==== Contexts
+
+Contexts hold per-environment settings: AMQP credentials, controller hostname, HTML root, and fabric repository paths. Most commands use the current context unless overridden with `--context`.
+
+[source,bash]
+----
+# Create or update a context
+upsilon context set production \
+  --controller-host upsilon \
+  --html-root /var/www/html \
+  --amqp-host upsilon \
+  --local-fabric-repo ~/.upsilon/contexts/production/fabric \
+  --current
+
+# List contexts (current marked with *)
+upsilon context ls
+
+# Switch context
+upsilon context use production
+
+# Show current context
+upsilon context current
+----
+
+Context aliases (`upsilon context alias set`) allow short names like `prod` to point at a full context name.
+
+==== Control node bootstrap
+
+The `controlnode` command group bootstraps and maintains assets on the control node. This is the primary setup path for new environments.
+
+[source,bash]
+----
+# Full bootstrap: script, fabric repo, and drone binary
+upsilon controlnode bootstrap --drone-binary /usr/local/sbin/upsilon-drone
+
+# Deploy only the bootstrap script
+upsilon controlnode deploy script
+
+# Deploy only the published drone binary
+upsilon controlnode deploy drone --drone-binary /usr/local/sbin/upsilon-drone
+----
+
+See xref:setup-controlnode.adoc[Control Node Bootstrap] for prerequisites, flags, and the end-to-end setup workflow.
+
+==== Fabric configuration
+
+Fabric-config is a git repository on the control node. Drones clone it and read `config.yml` to know which checks to run.
+
+[source,bash]
+----
+# Clone fabric-config from the control node
+upsilon fabric clone
+
+# List commands defined in the local fabric clone
+upsilon fabric commands
+
+# Capture a directory as a workload and push to fabric-config
+upsilon fabric workload capture ./my-check --name my-check --git-pull
+----
+
+After editing fabric-config locally, push changes and tell drones to pull:
+
+[source,bash]
+----
+upsilon request gitpull
+----
+
+==== Cluster administration
+
+These commands talk to the running cluster over AMQP (using the current context's broker settings):
+
+[source,bash]
+----
+upsilon ping                  # Ping all nodes
+upsilon status                # Cluster status
+upsilon listen heartbeats     # Watch node heartbeats
+upsilon request gitpull       # Trigger fabric-config git pull on drones
+upsilon request update        # Trigger drone self-update
+upsilon request execution     # Run a command on drones
+upsilon request report services  # Request service reports from custodian
+upsilon amqp install          # Declare the upsilon AMQP exchange
+----
+
+==== Global flags
+
+[cols="20%,80%",options="header"]
+|===
+| Flag | Description
+
+| `--context`
+| Context name (or alias) to use for this command
+
+| `-f, --format`
+| Output format: `table`, `json`, etc. (default: `table`)
+
+| `-l, --logLevel`
+| Log level (default: `info`)
+|===

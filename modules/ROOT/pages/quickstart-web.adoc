@@ -1,6 +1,5 @@
+= Install First
 [[install-first]]
-Install first
--------------
 
 * link:upsilon-web-installer[upsilon-web Installer]
 

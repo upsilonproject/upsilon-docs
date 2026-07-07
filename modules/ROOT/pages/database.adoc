@@ -1,6 +1,5 @@
+= Database Setup
 [#setup-db]
-Database 
-~~~~~~~~
 
 Upsilon uses the MySQL database. Put it in a container, install it natively, or
 however you like! There is lots of documentation on the web about how to setup

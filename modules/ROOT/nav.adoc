@@ -13,6 +13,7 @@
 ** xref:upsilon-your-way.adoc[Upsilon your way...]
 * Setup
 ** xref:database.adoc[Database Setup]
+** xref:setup-controlnode.adoc[Control Node Bootstrap]
 ** xref:setup-web.adoc[Web Setup]
 ** xref:setup-drone.adoc[Drone Setup]
 ** xref:setup-custodian.adoc[Custodian Setup]

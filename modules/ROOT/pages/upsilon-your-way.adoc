@@ -1,6 +1,5 @@
+= Upsilon your way...
 [[yourway]]
-Upsilon your way...
-~~~~~~~~~~~~~~~~~~~
 
 Upsilon was designed to not be too presecriptive to the architectire it
 runs on, as everyone has different environments and different

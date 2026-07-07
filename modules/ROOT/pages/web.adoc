@@ -1,5 +1,5 @@
+= Web
 [[web]]
-=== Web
 
 The web interface. 
 

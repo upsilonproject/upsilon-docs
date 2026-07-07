@@ -1,5 +1,4 @@
-Web
-~~~
+= Web Setup
 
 #### Launching the installer
 

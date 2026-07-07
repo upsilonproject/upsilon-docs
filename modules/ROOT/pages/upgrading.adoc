@@ -1,4 +1,3 @@
-Upgrading
----------
+= Upgrading
 
 Upsilon is designed to be N-1 compatible for updates, with automatic upgrades of database schema and similar whenever possible.

@@ -1,4 +1,3 @@
-Integration
------------
+= Integration
 
 This section is about integrating Upsilon with other tools and services.

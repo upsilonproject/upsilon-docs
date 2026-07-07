@@ -1,8 +1,38 @@
-=== Drone
+= Drone Setup
 
 upsilon-drone is the service that actually runs commands - you should start with at least one drone, and then build out from there.
 
 The drone service runs by reading a `config.yml`, and can even run commands quite happily in total isolation from everything else - there is even a `--offline` mode if you want to just run the drone disconnected from anything else.
+
+==== Bootstrapping a drone
+
+The recommended way to start a drone on a new host is to run the bootstrap script published by xref:setup-controlnode.adoc[Control Node Bootstrap]:
+
+[source,bash]
+----
+curl -fsS http://upsilon/bootstrap | bash
+----
+
+The bootstrap script:
+
+. Downloads `upsilon-drone` from the control node's HTTP root
+. Clones fabric-config from the control node into `/etc/upsilon-drone-fabric/upsilon-config`
+. Starts the drone process
+
+Set `UPSILON_IDENTIFIER` before running bootstrap if the drone should register under a specific node name:
+
+[source,bash]
+----
+export UPSILON_IDENTIFIER=myhost.example.com
+curl -fsS http://upsilon/bootstrap | bash
+----
+
+To update the published drone binary on the control node, re-run bootstrap or deploy from an operator workstation:
+
+[source,bash]
+----
+upsilon controlnode deploy drone --drone-binary /usr/local/sbin/upsilon-drone
+----
 
 ==== Overriding service autoconfiguration
 
@@ -10,7 +40,6 @@ image::diagrams/drone-custodian-web-architecture.png[Architecture]
 
 All services in the upsilon project try hard to use autoconfiguration to make your life easier, so they should just work "out of the box". However, sometimes it is necessary to override these defaults. This is possible with the following environment variables on startup;
 
-// FIXME not yet implemented in the Go version
 [options = "header"]
 |=======================================================================
 | Environment Variable | Example          | Description                
@@ -24,14 +53,14 @@ The drone service looks for it's configuration files in the following places, in
 
 * `/etc/upsilon-drone-fabric/upsilon-config/config.yml`
 
-While you can create this directory manually, and write a configuration file, it is more normal to let the drone get it's configuration from Git. This keeps the configuration file saved and versioned, etc.
+While you can create this directory manually, and write a configuration file, it is more normal to let the drone get it's configuration from Git. The control node fabric-config repository is initialized during `upsilon controlnode bootstrap`, and operators edit it with xref:cli.adoc[upsilon-cli] (`upsilon fabric clone`, local edits, push, then `upsilon request gitpull`).
 
 ===== config.yml Example
 
 This is a very simple configuration file example, that just runs the `date` command every minute.
 
-[yaml]
-....
+[source,yaml]
+----
 commands:
   - name: date
     exec: date
@@ -40,9 +69,8 @@ groups:
   - hosts: [all]
     commands:
       - command: date
-        interval 1
-....
+        interval: 1
+----
 
 Looks good. However, we need a custodian to write results to a database now...
-
 

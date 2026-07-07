@@ -1,3 +1,4 @@
+= Service Checks
 Here is a list of checks.
 
 \{% for page in site.pages %} \{% if page.layout == 'service-check' %}
